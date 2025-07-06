@@ -1,0 +1,316 @@
+[
+    {
+        "type": "text",
+        "text": "SEO AUDIT REPORT ",
+        "text_level": 1,
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "https://brigettagates.com.au/about/ ",
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "72/ 100",
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Good ",
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "EXECUTIVE SUMMARY ",
+        "text_level": 1,
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Overall SEO Score 72   \nPerformance 81   \nSEO Optimization 83   \nAccessibility 91   \nBest Practices 84 ",
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "KEY FINDINGS ",
+        "text_level": 1,
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• 3 critical issues requiring immediate attention   \n• 7 warnings that should be addressed   \n• Core Web Vitals: LCP 1.6s, FID 123ms, CLS 0.201   \n• Mobile-friendly: Yes   \n• HTTPS enabled: Yes ",
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "DETAILED ANALYSIS ",
+        "text_level": 1,
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Core Web Vitals ",
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Largest Contentful Paint (LCP) First Input Delay (FID) Cumulative Layout Shift (CLS) ",
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "1.6s < 2.5s   \n123ms < 100ms   \n0.201 < 0.1 ",
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Technical SEO ",
+        "text_level": 1,
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "HTTPS Protocol Mobile Responsive Page Speed Optimized Image Optimization ",
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "PASS PASS FAIL FAIL ",
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "ISSUES & RECOMMENDATIONS ",
+        "text_level": 1,
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "CRITICAL ",
+        "text_level": 1,
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Optimize for Conversational Keywords ",
+        "text_level": 1,
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Your content lacks conversational keywords that users speak when using voice search. ",
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Recommendation: ",
+        "text_level": 1,
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Include long-tail, question-based keywords like \"how to\", \"what is\", \"where can I\", and location-based phrases like \"near me\". ",
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "CRITICAL ",
+        "text_level": 1,
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Demonstrate First-Hand Experience ",
+        "text_level": 1,
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Content lacks indicators of real-world experience and practical knowledge. ",
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Recommendation: ",
+        "text_level": 1,
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Add case studies, personal experiences, test results, and real-world examples. Use first-person language and show actual usage or implementation. ",
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "WARNING ",
+        "text_level": 1,
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Improve Featured Snippet Optimization ",
+        "text_level": 1,
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Voice assistants often read featured snippets as answers. Your content structure needs improvement. ",
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Recommendation: ",
+        "text_level": 1,
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Create clear, concise answers to common questions, use numbered lists, bullet points, and structured data markup for better snippet chances. ",
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "CRITICAL ",
+        "text_level": 1,
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Strengthen Expertise Indicators ",
+        "text_level": 1,
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Website lacks clear indicators of subject matter expertise and qualifications. ",
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Recommendation: ",
+        "text_level": 1,
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Add author credentials, certifications, education background, and professional experience. Include technical depth and industry-specific knowledge. ",
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "WARNING ",
+        "text_level": 1,
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Perplexity AI Optimization Opportunity ",
+        "text_level": 1,
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Your content could be better optimized for Perplexity AI, which prioritizes citable, authoritative sources. ",
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Recommendation: ",
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Add proper citations, include author bylines, use data-driven content, and establish clear expertise indicators. ",
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "WARNING ",
+        "text_level": 1,
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Enhance Local Voice Search Presence ",
+        "text_level": 1,
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Many voice searches are local. Your local SEO optimization needs improvement. ",
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Recommendation: ",
+        "text_level": 1,
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Optimize Google Business Profile, ensure NAP consistency, encourage reviews, and include location-specific content. ",
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "WARNING ",
+        "text_level": 1,
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Add FAQ Schema for Voice Search ",
+        "text_level": 1,
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "FAQ schema markup helps voice assistants find and read your answers to common ",
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "questions. ",
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Recommendation: ",
+        "text_level": 1,
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Implement FAQPage schema markup for FAQ content, help pages, and question-answer sections. ",
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "WARNING ",
+        "text_level": 1,
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Build Authority and Recognition ",
+        "text_level": 1,
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Website needs stronger authority signals and industry recognition. ",
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Recommendation: ",
+        "text_level": 1,
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Create comprehensive About pages, showcase awards and recognition, build industry partnerships, and establish thought leadership. ",
+        "page_idx": 4
+    }
+]

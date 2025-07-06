@@ -1,0 +1,130 @@
+[
+    {
+        "type": "text",
+        "text": "Website Analysis Report ",
+        "text_level": 1,
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Website: https://finaltest.com Client: Joseph FINAL Test - FINAL Test Co ",
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Overall SEO Score ",
+        "text_level": 1,
+        "page_idx": 0
+    },
+    {
+        "type": "image",
+        "img_path": "images/wbqhsm.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Good ",
+        "text_level": 1,
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Detailed Metrics Breakdown ",
+        "text_level": 1,
+        "page_idx": 0
+    },
+    {
+        "type": "table",
+        "img_path": "images/lhs95t.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "\n\n<html><body><table><tr><td>Metric Score</td></tr><tr><td>Performance 74/100</td></tr><tr><td>SEO 76/100</td></tr><tr><td>Accessibility 73/100</td></tr><tr><td>BestPractices 75/100</td></tr><tr><td>Al SearchReadiness 67/100</td></tr><tr><td>Voice Search Optimization 45/100</td></tr><tr><td>Schema&Entity 10/100</td></tr><tr><td>E-E-A-T Score 34/100</td></tr></table></body></html>\n\n",
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Key Issues & Recommendations ",
+        "text_level": 1,
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Ø=Ý4   C r i t i c a l   I s s u e s   ( F i x   I m m e d i a t e l y ) ",
+        "text_level": 1,
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• Optimize for Conversational Keywords ",
+        "text_level": 1,
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Include long-tail, question-based keywords like \"how to\", \"what is\", \"where can I\", and location-based phrases like \"near me\". ",
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• Add Organization Schema Markup ",
+        "text_level": 1,
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Implement Organization schema with company name, logo, contact information, and social media profiles using JSON-LD format. ",
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• Demonstrate First-Hand Experience ",
+        "text_level": 1,
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Add case studies, personal experiences, test results, and real-world examples. Use first-person language and show actual usage or implementation. ",
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Ø=ßá   R e c o m m e n d a t i o n s   f o r   I m p r o v e m e n t ",
+        "text_level": 1,
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• Large Cumulative Layout Shift ",
+        "text_level": 1,
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Set size attributes for images and videos, avoid inserting content above existing content, and preload fonts to reduce layout shifts. ",
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• Improve Featured Snippet Optimization ",
+        "text_level": 1,
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Create clear, concise answers to common questions, use numbered lists, bullet points, and structured data markup for better snippet chances. ",
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• Perplexity AI Optimization Opportunity ",
+        "text_level": 1,
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Add proper citations, include author bylines, use data-driven content, and establish clear expertise indicators. ",
+        "page_idx": 1
+    }
+]

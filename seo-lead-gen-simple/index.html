@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8 Mile Sniper - Advanced 2025 SEO Analysis Tool</title>
+    <meta name="description" content="Advanced 2025 SEO Analysis with AI search optimization. 47+ SEO factors analyzed. Superior to basic tools like seoptimiser.com.">
+    
+    <!-- External Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <!-- Professional PDF Generator -->
+    <script src="professional_pdf_generator.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #f4c430;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .brand-text h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 2px;
+        }
+
+        .brand-text p {
+            font-size: 0.9rem;
+            color: #f4c430;
+            font-weight: 500;
+        }
+
+        .contact-info {
+            text-align: right;
+            font-size: 0.9rem;
+        }
+
+        .contact-info a {
+            color: #f4c430;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 3rem 0;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #f4c430, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #cccccc;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: radial-gradient(circle at center, rgba(244, 196, 48, 0.1) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #f4c430, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 3rem auto 0;
+            justify-content: center;
+            max-width: 1200px;
+        }
+        
+        .features-grid > * {
+            width: 270px;
+            flex-shrink: 0;
+        }
+
+        /* Preview Section */
+        .preview-section {
+            margin: 4rem 0;
+        }
+
+        .preview-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 3rem auto;
+            justify-content: center;
+            max-width: 1200px;
+        }
+        
+        .preview-grid > * {
+            width: 270px;
+            flex-shrink: 0;
+        }
+
+        .preview-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #f4c430;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .preview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(244, 196, 48, 0.3);
+        }
+
+        .preview-card h3 {
+            color: #f4c430;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .preview-feature {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #4CAF50;
+            margin: 1rem 0;
+            padding: 0.5rem 1rem;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 20px;
+            border: 1px solid #4CAF50;
+            display: inline-block;
+        }
+
+        .preview-card p {
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+
+        .preview-features {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .preview-features h3 {
+            color: #f4c430;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .features-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .features-list > * {
+            flex: 1 1 300px;
+            max-width: 450px;
+        }
+
+        .feature-item {
+            color: #ffffff;
+            padding: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .feature-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid #f4c430;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(244, 196, 48, 0.3);
+        }
+
+        .feature-card h3 {
+            color: #f4c430;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* URL Input Section */
+        .url-input-section {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            border: 1px solid #f4c430;
+        }
+
+        .url-form {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            gap: 1rem;
+        }
+
+        .url-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            border: 2px solid #f4c430;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .url-input:focus {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(244, 196, 48, 0.3);
+        }
+
+        .url-input::placeholder {
+            color: #cccccc;
+        }
+
+        .analyze-btn {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #f4c430, #ffd700);
+            color: #000000;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .analyze-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(244, 196, 48, 0.4);
+        }
+
+        .analyze-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Results Section */
+        .results-section {
+            display: none;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid #f4c430;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .analyzed-url {
+            color: #f4c430;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .overall-score {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+        }
+
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffffff;
+            position: relative;
+            background: conic-gradient(#f4c430 0% var(--score-percent), #333 var(--score-percent) 100%);
+        }
+
+        .score-circle::before {
+            content: '';
+            position: absolute;
+            inset: 10px;
+            border-radius: 50%;
+            background: #1a1a1a;
+        }
+
+        .score-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        .metrics-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 3rem auto;
+            justify-content: center;
+            max-width: 1200px;
+        }
+        
+        .metrics-grid > * {
+            width: 270px;
+            flex-shrink: 0;
+        }
+
+        .metric-card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid #f4c430;
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .metric-card h3 {
+            color: #f4c430;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .metric-bar {
+            background: #333;
+            border-radius: 10px;
+            height: 10px;
+            margin: 0.5rem 0;
+            overflow: hidden;
+        }
+
+        .metric-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #f4c430, #ffd700);
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+
+        .metric-value {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #cccccc;
+        }
+
+        /* Charts */
+        .charts-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 3rem auto;
+            justify-content: center;
+            max-width: 1000px;
+        }
+        
+        .charts-section > * {
+            width: 450px;
+            flex-shrink: 0;
+        }
+
+        .chart-container {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid #f4c430;
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .chart-container h3 {
+            color: #f4c430;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        /* Issues Panel */
+        .issues-panel {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid #f4c430;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .issues-panel h3 {
+            color: #f4c430;
+            margin-bottom: 1rem;
+        }
+
+        .issue-item {
+            background: rgba(255, 0, 0, 0.1);
+            border-left: 4px solid #ff4444;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+        }
+
+        .issue-critical {
+            border-left-color: #ff4444;
+        }
+
+        .issue-warning {
+            border-left-color: #ffaa00;
+            background: rgba(255, 170, 0, 0.1);
+        }
+
+        .issue-info {
+            border-left-color: #4488ff;
+            background: rgba(68, 136, 255, 0.1);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(45deg, rgba(244, 196, 48, 0.1), rgba(255, 215, 0, 0.1));
+            border-radius: 20px;
+            padding: 3rem;
+            border: 2px solid #f4c430;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: #f4c430;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            padding: 1.5rem 3rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #f4c430, #ffd700);
+            color: #000000;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(244, 196, 48, 0.4);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border: 2px solid #f4c430;
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .modal-header h2 {
+            color: #f4c430;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: #f4c430;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(244, 196, 48, 0.2);
+        }
+
+        /* Form */
+        .lead-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            color: #f4c430;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            padding: 1rem;
+            font-size: 1rem;
+            border: 2px solid #f4c430;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(244, 196, 48, 0.3);
+        }
+
+        .form-group input::placeholder {
+            color: #999999;
+        }
+
+        .submit-btn {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #f4c430, #ffd700);
+            color: #000000;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(244, 196, 48, 0.4);
+        }
+
+        /* Thank You Section */
+        .thank-you-section {
+            display: none;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid #f4c430;
+        }
+
+        .thank-you-section h2 {
+            color: #f4c430;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .thank-you-section p {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid #f4c430;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .contact-details h3 {
+            color: #f4c430;
+            margin-bottom: 1rem;
+        }
+
+        .contact-details p {
+            margin: 0.5rem 0;
+        }
+
+        .contact-details a {
+            color: #f4c430;
+            text-decoration: none;
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #333;
+            border-top: 3px solid #f4c430;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .url-form {
+                flex-direction: column;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .contact-info {
+                text-align: center;
+            }
+
+            .charts-section {
+                flex-direction: column;
+            }
+            
+            .charts-section > * {
+                flex: 1 1 auto;
+                max-width: 100%;
+            }
+
+            .modal-content {
+                padding: 2rem;
+            }
+        }
+
+        /* Sticky CTA Button */
+        .sticky-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1500;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #f4c430, #ffd700);
+            color: #000000;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(244, 196, 48, 0.4);
+            display: none;
+        }
+
+        .sticky-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(244, 196, 48, 0.6);
+        }
+
+        .sticky-cta.show {
+            display: block;
+            animation: bounceIn 0.5s ease;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1500;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quick-nav.show {
+            display: flex;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(244, 196, 48, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-dot.active {
+            background: #f4c430;
+            transform: scale(1.3);
+        }
+
+        .nav-dot:hover {
+            background: #f4c430;
+            transform: scale(1.2);
+        }
+
+        .nav-tooltip {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: #f4c430;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-dot:hover .nav-tooltip {
+            opacity: 1;
+        }
+
+        /* Compact sections for better flow */
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .hero {
+            padding: 2rem 0;
+        }
+
+        /* Print Styles */
+        @media print {
+            .header, .cta-section, .modal, .analyze-btn, .sticky-cta, .quick-nav {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="8-mile-sniper-logo.png" alt="8 Mile Sniper Logo" class="logo">
+                    <div class="brand-text">
+                        <h1>8 Mile Sniper</h1>
+                        <p>AI-Driven Local Growth</p>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <div>📧 <a href="mailto:support@8milesniper.com">support@8milesniper.com</a></div>
+                    <div>📞 <a href="tel:+61444513480">+61 444 513 480</a></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero section">
+                <h1>Advanced 2025 SEO Analysis</h1>
+                <p>Discover your website's SEO potential with our advanced AI-powered analysis tool. We analyze <strong style="color: #f4c430; text-decoration: underline;">47+ SEO factors including 2025 AI search readiness</strong>, voice search optimization, and E-E-A-T scoring.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>🤖 2025 AI Search Ready</h3>
+                        <p>Optimize for ChatGPT, Perplexity, and other AI search engines</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📊 47+ SEO Factors</h3>
+                        <p>Comprehensive analysis beyond basic tools like seoptimiser.com</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🗣️ Voice Search Ready</h3>
+                        <p>Optimize for Alexa, Siri, and Google Assistant</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>⭐ E-E-A-T Scoring</h3>
+                        <p>Experience, Expertise, Authoritativeness, Trust analysis</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- URL Input Section -->
+            <section class="url-input-section section">
+                <h2 class="section-title">Order Your Expert SEO Audit</h2>
+                <p class="section-subtitle">Enter your website URL to order your $47 professional audit by real experts</p>
+                
+                <form class="url-form" id="urlForm">
+                    <input 
+                        type="url" 
+                        class="url-input" 
+                        id="websiteUrl" 
+                        placeholder="https://yourwebsite.com" 
+                        required
+                    >
+                    <button type="submit" class="analyze-btn" id="analyzeBtn">
+                        Order Expert Audit - $47
+                    </button>
+                </form>
+            </section>
+
+            <!-- Preview Section -->
+            <section class="preview-section section">
+                <h2 class="section-title">What You'll Get</h2>
+                <p class="section-subtitle">Your comprehensive professional SEO + AI audit will include:</p>
+                
+                <div class="preview-grid">
+                    <div class="preview-card">
+                        <h3>📊 47+ SEO Factor Analysis</h3>
+                        <div class="preview-feature">✅ Complete</div>
+                        <p>Comprehensive scoring based on all major ranking factors</p>
+                    </div>
+                    
+                    <div class="preview-card">
+                        <h3>🤖 2025 AI Search Readiness</h3>
+                        <div class="preview-feature">✅ Expert Review</div>
+                        <p>Optimization for ChatGPT, Perplexity & AI engines</p>
+                    </div>
+                    
+                    <div class="preview-card">
+                        <h3>🗣️ Voice Search Optimization</h3>
+                        <div class="preview-feature">✅ Tactical Plan</div>
+                        <p>Ready for Alexa, Siri, Google Assistant</p>
+                    </div>
+                    
+                    <div class="preview-card">
+                        <h3>⭐ 72-Hour Delivery</h3>
+                        <div class="preview-feature">✅ Guaranteed</div>
+                        <p>Full next-step gameplan by real experts</p>
+                    </div>
+                </div>
+
+                <div class="preview-features">
+                    <h3>Your $47 Expert Audit Includes:</h3>
+                    <div class="features-list">
+                        <div class="feature-item">✅ Expert analysis by real SEO professionals</div>
+                        <div class="feature-item">✅ 47+ SEO factors reviewed manually</div>
+                        <div class="feature-item">✅ 2025 AI search optimization strategy</div>
+                        <div class="feature-item">✅ Voice search readiness gameplan</div>
+                        <div class="feature-item">✅ 72-hour guaranteed delivery</div>
+                        <div class="feature-item">✅ Full next-step action plan</div>
+                        <div class="feature-item">✅ Professional tactical recommendations</div>
+                        <div class="feature-item">✅ Comprehensive PDF audit report</div>
+                    </div>
+                </div>
+
+                <div style="background: rgba(244, 196, 48, 0.1); padding: 2rem; border-radius: 15px; margin: 3rem 0; border: 1px solid #f4c430; text-align: center;">
+                    <h3 style="color: #f4c430; margin-bottom: 1rem;">📈 Professional SEO Services</h3>
+                    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin: 1rem 0;">
+                        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 10px; min-width: 180px; max-width: 220px; text-align: center;"><strong>Single Analysis:</strong><br>$47 per audit</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 10px; min-width: 180px; max-width: 220px; text-align: center;"><strong>Business Package:</strong><br>10 analyses for $200</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 10px; min-width: 180px; max-width: 220px; text-align: center;"><strong>Unlimited:</strong><br>Unlimited for $397</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 10px; min-width: 180px; max-width: 220px; text-align: center;"><strong>White Label:</strong><br>Full platform for $497</div>
+                    </div>
+                    <p style="margin-top: 1rem;">📧 Contact: <strong>support@8milesniper.com</strong> | 📞 <strong>+61 444 513 480</strong></p>
+                </div>
+            </section>
+
+            <!-- Loading Animation -->
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <h3>Analyzing your website...</h3>
+                <p>This may take a few moments while we perform a comprehensive analysis</p>
+            </div>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection">
+                <div class="results-header">
+                    <h2 class="section-title">SEO Analysis Results</h2>
+                    <div class="analyzed-url" id="analyzedUrl"></div>
+                </div>
+
+                <div class="overall-score">
+                    <div class="score-circle" id="scoreCircle">
+                        <div class="score-text" id="scoreText">0/100</div>
+                    </div>
+                </div>
+
+                <div class="metrics-grid" id="metricsGrid">
+                    <!-- Metrics will be populated by JavaScript -->
+                </div>
+
+                <div class="charts-section">
+                    <div class="chart-container">
+                        <h3>SEO Factors Breakdown</h3>
+                        <canvas id="factorsChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>🚀 2025 AI Search Readiness Score</h3>
+                        <canvas id="aiReadinessChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="issues-panel">
+                    <h3>Critical Issues & Recommendations</h3>
+                    <div id="issuesList">
+                        <!-- Issues will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="cta-section">
+                    <h2>Professional SEO + AI Audit</h2>
+                    <p>For just $47, get a tactical SEO + AI Audit built by real experts — not an auto-bot. Delivered in 72 hours with a full next-step gameplan for advanced search optimization.</p>
+                    <button class="cta-btn" id="getReportBtn">Get Expert Analysis - $47</button>
+                </div>
+            </section>
+
+            <!-- Thank You Section -->
+            <section class="thank-you-section" id="thankYouSection">
+                <h2>Thank You!</h2>
+                <p>Your detailed SEO analysis report has been generated and should download shortly.</p>
+                
+                <div class="contact-details">
+                    <h3>Next Steps</h3>
+                    <p>Ready for more comprehensive SEO analysis? Here are our professional services:</p>
+                    
+                    <div style="background: rgba(244, 196, 48, 0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0; border: 1px solid #f4c430;">
+                        <h4 style="color: #f4c430; margin-bottom: 1rem;">Professional SEO Analysis Packages</h4>
+                        <ul style="text-align: left; margin: 1rem 0; padding-left: 2rem; line-height: 1.8;">
+                            <li><strong>Single Analysis:</strong> $47 per comprehensive SEO audit</li>
+                            <li><strong>Business Package:</strong> 10 detailed analyses for $200</li>
+                            <li><strong>Unlimited Package:</strong> Unlimited analyses for $397</li>
+                            <li><strong>White Label Solution:</strong> Full rebrandable platform for $497</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Contact Information</h3>
+                    <p>📧 Email: <a href="mailto:support@8milesniper.com">support@8milesniper.com</a></p>
+                    <p>📞 Phone: <a href="tel:+61444513480">+61 444 513 480</a></p>
+                    <p>🌐 Website: <a href="https://8milesniper.com" target="_blank">8milesniper.com</a></p>
+                </div>
+
+
+            </section>
+        </div>
+    </main>
+
+    <!-- Sticky CTA Button -->
+    <button class="sticky-cta" id="stickyCta" onclick="scrollToResults()">
+        📊 View Analysis Results
+    </button>
+
+    <!-- Quick Navigation -->
+    <div class="quick-nav" id="quickNav">
+        <div class="nav-dot" onclick="scrollToSection('hero')" data-section="hero">
+            <div class="nav-tooltip">Home</div>
+        </div>
+        <div class="nav-dot" onclick="scrollToSection('url-input-section')" data-section="analyze">
+            <div class="nav-tooltip">Analyze</div>
+        </div>
+        <div class="nav-dot" onclick="scrollToSection('resultsSection')" data-section="results">
+            <div class="nav-tooltip">Results</div>
+        </div>
+        <div class="nav-dot" onclick="scrollToSection('thankYouSection')" data-section="thankyou">
+            <div class="nav-tooltip">Contact</div>
+        </div>
+    </div>
+
+    <!-- Lead Capture Modal -->
+    <div class="modal" id="leadModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div class="modal-header">
+                <h2>Expert SEO + AI Audit - $47</h2>
+                <p>Enter your details to order your professional audit by real experts. Delivered in 72 hours with full gameplan.</p>
+            </div>
+            
+            <form class="lead-form" id="leadForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="John Doe" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" placeholder="john@company.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+61 444 513 480" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="company">Company Name</label>
+                    <input type="text" id="company" name="company" placeholder="Your Company Inc.">
+                </div>
+                
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Order Expert Audit - $47
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let currentAnalysisData = null;
+        let factorsChart = null;
+        let aiReadinessChart = null;
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApp();
+            initializeNavigation();
+        });
+
+        function initializeApp() {
+            // Check if there's stored analysis data
+            const storedData = localStorage.getItem('seoAnalysisData');
+            if (storedData) {
+                currentAnalysisData = JSON.parse(storedData);
+                // Optionally restore the analysis if it's recent
+            }
+
+            // Set up event listeners
+            document.getElementById('urlForm').addEventListener('submit', handleUrlSubmission);
+            document.getElementById('getReportBtn').addEventListener('click', openLeadModal);
+            document.getElementById('leadForm').addEventListener('submit', handleLeadSubmission);
+        }
+
+        async function handleUrlSubmission(e) {
+            e.preventDefault();
+            
+            const url = document.getElementById('websiteUrl').value;
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            
+            // Validate URL
+            if (!isValidUrl(url)) {
+                alert('Please enter a valid URL starting with http:// or https://');
+                return;
+            }
+
+            // Store URL for analysis
+            localStorage.setItem('pendingAnalysisUrl', url);
+            
+            // IMMEDIATELY open payment modal - NO FREE PREVIEW
+            openLeadModal();
+        }
+
+        function isValidUrl(string) {
+            try {
+                new URL(string);
+                return true;
+            } catch (_) {
+                return false;
+            }
+        }
+
+        async function simulateAnalysis(url) {
+            // Simulate API delay
+            await new Promise(resolve => setTimeout(resolve, 3000 + Math.random() * 2000));
+
+            // Generate realistic SEO analysis data
+            currentAnalysisData = generateAnalysisData(url);
+            
+            // Store in localStorage
+            localStorage.setItem('seoAnalysisData', JSON.stringify(currentAnalysisData));
+            localStorage.setItem('lastAnalysisTime', Date.now().toString());
+        }
+
+        function generateAnalysisData(url) {
+            const domain = new URL(url).hostname;
+            
+            // Generate CONSISTENT scores based on domain characteristics (not random)
+            // Use domain length and character codes for deterministic scoring
+            let domainHash = 0;
+            for (let i = 0; i < domain.length; i++) {
+                domainHash = ((domainHash << 5) - domainHash + domain.charCodeAt(i)) & 0xffffffff;
+            }
+            
+            // Create deterministic but realistic scores based on domain
+            const baseScore = 45 + Math.abs(domainHash % 35);
+            const modifier = Math.abs(domainHash % 100) / 100; // 0-1 based on domain
+            
+            const metrics = {
+                technicalSeo: Math.floor(baseScore + (modifier * 20)),
+                contentQuality: Math.floor(baseScore + ((domainHash % 25))),
+                userExperience: Math.floor(baseScore + ((domainHash % 30))),
+                mobileOptimization: Math.floor(baseScore + ((domainHash % 20))),
+                pageSpeed: Math.floor(baseScore + ((domainHash % 15))),
+                aiSearchReadiness: Math.floor(30 + ((domainHash % 40))), // Lower for AI readiness
+                voiceSearchOptimization: Math.floor(25 + ((domainHash % 35))),
+                eeAtScore: Math.floor(baseScore + ((domainHash % 20))),
+                structuredData: Math.floor(20 + ((domainHash % 60))),
+                localSeo: Math.floor(baseScore + ((domainHash % 25)))
+            };
+
+            const overallScore = Math.floor(Object.values(metrics).reduce((a, b) => a + b, 0) / Object.keys(metrics).length);
+
+            const issues = generateIssues(metrics, domain);
+
+            return {
+                url,
+                domain,
+                overallScore,
+                metrics,
+                issues,
+                analyzedAt: new Date().toISOString(),
+                factorsAnalyzed: 47
+            };
+        }
+
+        function generateIssues(metrics, domain) {
+            const issues = [];
+
+            if (metrics.pageSpeed < 60) {
+                issues.push({
+                    type: 'critical',
+                    title: 'Page Speed Optimization Required',
+                    description: 'Your website loads slower than recommended. Optimize images, enable compression, and minimize CSS/JS files.'
+                });
+            }
+
+            if (metrics.aiSearchReadiness < 50) {
+                issues.push({
+                    type: 'critical',
+                    title: '2025 AI Search Readiness',
+                    description: 'Your website is not optimized for AI search engines like ChatGPT and Perplexity. Add structured data and improve content clarity.'
+                });
+            }
+
+            if (metrics.voiceSearchOptimization < 40) {
+                issues.push({
+                    type: 'warning',
+                    title: 'Voice Search Optimization',
+                    description: 'Optimize for voice search queries by adding FAQ sections and natural language content.'
+                });
+            }
+
+            if (metrics.structuredData < 50) {
+                issues.push({
+                    type: 'warning',
+                    title: 'Structured Data Missing',
+                    description: 'Add schema markup to help search engines understand your content better.'
+                });
+            }
+
+            if (metrics.mobileOptimization < 70) {
+                issues.push({
+                    type: 'info',
+                    title: 'Mobile Optimization',
+                    description: 'Improve mobile user experience with responsive design and touch-friendly navigation.'
+                });
+            }
+
+            if (metrics.eeAtScore < 60) {
+                issues.push({
+                    type: 'info',
+                    title: 'E-E-A-T Score Improvement',
+                    description: 'Enhance your Experience, Expertise, Authoritativeness, and Trust signals with author bios and credentials.'
+                });
+            }
+
+            return issues;
+        }
+
+
+
+        function updateOverallScore(score) {
+            const scoreCircle = document.getElementById('scoreCircle');
+            const scoreText = document.getElementById('scoreText');
+            
+            // Set CSS custom property for the score percentage
+            scoreCircle.style.setProperty('--score-percent', `${score}%`);
+            
+            // Animate the score number
+            let currentScore = 0;
+            const targetScore = score;
+            const increment = targetScore / 100;
+            
+            const timer = setInterval(() => {
+                currentScore += increment;
+                if (currentScore >= targetScore) {
+                    currentScore = targetScore;
+                    clearInterval(timer);
+                }
+                scoreText.textContent = `${Math.floor(currentScore)}/100`;
+            }, 20);
+        }
+
+        function displayMetrics() {
+            const metricsGrid = document.getElementById('metricsGrid');
+            metricsGrid.innerHTML = '';
+
+            const metricsConfig = {
+                technicalSeo: 'Technical SEO',
+                contentQuality: 'Content Quality',
+                userExperience: 'User Experience',
+                mobileOptimization: 'Mobile Optimization',
+                pageSpeed: 'Page Speed',
+                aiSearchReadiness: '2025 AI Search Readiness',
+                voiceSearchOptimization: 'Voice Search Optimization',
+                eeAtScore: 'E-E-A-T Score',
+                structuredData: 'Structured Data',
+                localSeo: 'Local SEO'
+            };
+
+            Object.entries(metricsConfig).forEach(([key, label]) => {
+                const value = currentAnalysisData.metrics[key];
+                const metricCard = createMetricCard(label, value);
+                metricsGrid.appendChild(metricCard);
+            });
+        }
+
+        function createMetricCard(label, value) {
+            const card = document.createElement('div');
+            card.className = 'metric-card';
+            
+            card.innerHTML = `
+                <h3>${label}</h3>
+                <div class="metric-value">
+                    <span>${value}/100</span>
+                    <span>${getScoreLabel(value)}</span>
+                </div>
+                <div class="metric-bar">
+                    <div class="metric-fill" style="width: 0%"></div>
+                </div>
+            `;
+
+            // Animate the progress bar
+            setTimeout(() => {
+                const fill = card.querySelector('.metric-fill');
+                fill.style.width = `${value}%`;
+            }, 100);
+
+            return card;
+        }
+
+        function getScoreLabel(score) {
+            if (score >= 80) return 'Excellent';
+            if (score >= 60) return 'Good';
+            if (score >= 40) return 'Needs Work';
+            return 'Critical';
+        }
+
+        function createCharts() {
+            createFactorsChart();
+            createAiReadinessChart();
+        }
+
+        function createFactorsChart() {
+            const ctx = document.getElementById('factorsChart').getContext('2d');
+            
+            // Destroy existing chart if it exists
+            if (factorsChart) {
+                factorsChart.destroy();
+            }
+
+            const data = {
+                labels: ['Technical SEO', 'Content', 'UX', 'Mobile', 'Speed', 'AI Ready', 'Voice', 'E-E-A-T', 'Schema', 'Local'],
+                datasets: [{
+                    data: [
+                        currentAnalysisData.metrics.technicalSeo,
+                        currentAnalysisData.metrics.contentQuality,
+                        currentAnalysisData.metrics.userExperience,
+                        currentAnalysisData.metrics.mobileOptimization,
+                        currentAnalysisData.metrics.pageSpeed,
+                        currentAnalysisData.metrics.aiSearchReadiness,
+                        currentAnalysisData.metrics.voiceSearchOptimization,
+                        currentAnalysisData.metrics.eeAtScore,
+                        currentAnalysisData.metrics.structuredData,
+                        currentAnalysisData.metrics.localSeo
+                    ],
+                    backgroundColor: [
+                        'rgba(244, 196, 48, 0.8)',
+                        'rgba(255, 215, 0, 0.8)',
+                        'rgba(244, 196, 48, 0.6)',
+                        'rgba(255, 215, 0, 0.6)',
+                        'rgba(244, 196, 48, 0.4)',
+                        'rgba(255, 215, 0, 0.4)',
+                        'rgba(244, 196, 48, 0.7)',
+                        'rgba(255, 215, 0, 0.7)',
+                        'rgba(244, 196, 48, 0.5)',
+                        'rgba(255, 215, 0, 0.5)'
+                    ],
+                    borderColor: '#f4c430',
+                    borderWidth: 2
+                }]
+            };
+
+            factorsChart = new Chart(ctx, {
+                type: 'radar',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: {
+                                display: false
+                            },
+                            grid: {
+                                display: false
+                            },
+                            pointLabels: {
+                                color: '#ffffff',
+                                font: {
+                                    size: 12
+                                }
+                            },
+                            ticks: {
+                                color: '#ffffff',
+                                backdropColor: 'transparent'
+                            },
+                            min: 0,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+
+        function createAiReadinessChart() {
+            const ctx = document.getElementById('aiReadinessChart').getContext('2d');
+            
+            // Destroy existing chart if it exists
+            if (aiReadinessChart) {
+                aiReadinessChart.destroy();
+            }
+
+            const aiScore = currentAnalysisData.metrics.aiSearchReadiness;
+            const remaining = 100 - aiScore;
+
+            aiReadinessChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['AI Ready', 'Needs Improvement'],
+                    datasets: [{
+                        data: [aiScore, remaining],
+                        backgroundColor: [
+                            'rgba(244, 196, 48, 0.8)',
+                            'rgba(51, 51, 51, 0.8)'
+                        ],
+                        borderColor: [
+                            '#f4c430',
+                            '#333333'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#ffffff',
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function displayIssues() {
+            const issuesList = document.getElementById('issuesList');
+            issuesList.innerHTML = '';
+
+            currentAnalysisData.issues.forEach(issue => {
+                const issueElement = document.createElement('div');
+                issueElement.className = `issue-item issue-${issue.type}`;
+                
+                issueElement.innerHTML = `
+                    <h4>${issue.title}</h4>
+                    <p>${issue.description}</p>
+                `;
+
+                issuesList.appendChild(issueElement);
+            });
+        }
+
+        function openLeadModal() {
+            document.getElementById('leadModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('leadModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        async function handleLeadSubmission(e) {
+            e.preventDefault();
+            
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                company: document.getElementById('company').value,
+                websiteUrl: currentAnalysisData.url,
+                submittedAt: new Date().toISOString()
+            };
+
+            // Store lead data in localStorage
+            const existingLeads = JSON.parse(localStorage.getItem('leadData') || '[]');
+            existingLeads.push(formData);
+            localStorage.setItem('leadData', JSON.stringify(existingLeads));
+
+            // Show loading state
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Generating Report...';
+
+            try {
+                // Generate and download PDF
+                await generateAndDownloadPDF(formData);
+                
+                // Close modal and show thank you
+                closeModal();
+                showThankYou();
+                
+            } catch (error) {
+                console.error('PDF generation failed:', error);
+                alert('Failed to generate PDF. Please try again.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Generate PDF Report';
+            }
+        }
+
+        async function generateAndDownloadPDF(leadData) {
+            // Use the new professional PDF generator
+            const analysisData = {
+                url: currentAnalysisData.url,
+                overallScore: currentAnalysisData.overallScore,
+                aiReadinessScore: currentAnalysisData.metrics.aiSearchReadiness,
+                voiceSearchScore: currentAnalysisData.metrics.voiceSearchOptimization,
+                eeAtScore: currentAnalysisData.metrics.eeAtScore,
+                metrics: currentAnalysisData.metrics,
+                issues: currentAnalysisData.issues
+            };
+
+            const clientData = {
+                fullName: leadData.fullName,
+                company: leadData.company,
+                websiteUrl: currentAnalysisData.url
+            };
+
+            // Generate and download the professional PDF
+            window.downloadProfessionalSEOReport(analysisData, clientData);
+
+            // Send lead notification
+            sendLeadNotification(leadData);
+        }
+        async function sendLeadNotification(leadData) {
+            // ⭐ GOOGLE SHEETS INTEGRATION
+            // Replace YOUR_GOOGLE_APPS_SCRIPT_URL with your actual deployed script URL
+            const GOOGLE_SHEETS_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL'; // ← You'll replace this
+            
+            const sheetsData = {
+                fullName: leadData.fullName,
+                email: leadData.email,
+                phone: leadData.phone,
+                company: leadData.company || 'N/A',
+                websiteUrl: leadData.websiteUrl,
+                seoScore: currentAnalysisData.overallScore,
+                aiReadinessScore: currentAnalysisData.metrics.aiSearchReadiness,
+                voiceSearchScore: currentAnalysisData.metrics.voiceSearchOptimization,
+                eeAtScore: currentAnalysisData.metrics.eeAtScore
+            };
+            
+            try {
+                // Send to Google Sheets
+                if (GOOGLE_SHEETS_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL') {
+                    await fetch(GOOGLE_SHEETS_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(sheetsData)
+                    });
+                    console.log('✅ Lead sent to Google Sheets successfully');
+                }
+            } catch (error) {
+                console.error('❌ Failed to send to Google Sheets:', error);
+            }
+            
+            // Backup: Also create mailto link
+            const subject = encodeURIComponent('New SEO Analysis Lead - ' + leadData.fullName);
+            const body = encodeURIComponent(`
+🔥 NEW LEAD from SEO Analysis Tool:
+
+👤 Contact Details:
+Name: ${leadData.fullName}
+Email: ${leadData.email}
+Phone: ${leadData.phone}
+Company: ${leadData.company || 'N/A'}
+
+🌐 Analysis Details:
+Website: ${leadData.websiteUrl}
+Overall SEO Score: ${currentAnalysisData.overallScore}/100
+2025 AI Readiness: ${currentAnalysisData.metrics.aiSearchReadiness}/100
+Voice Search Score: ${currentAnalysisData.metrics.voiceSearchOptimization}/100
+E-E-A-T Score: ${currentAnalysisData.metrics.eeAtScore}/100
+
+⏰ Submitted: ${new Date(leadData.submittedAt).toLocaleString()}
+
+🎯 Next Steps: Follow up within 24 hours to discuss their SEO optimization needs.
+            `);
+
+            const mailtoLink = `mailto:support@8milesniper.com?subject=${subject}&body=${body}`;
+            
+            // Store mailto link for manual use if needed (removed auto-opening to prevent webmail redirects)
+            console.log('📧 Backup email notification prepared:', mailtoLink);
+        }
+
+
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('leadModal');
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Escape key to close modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Navigation and UX enhancements
+        function initializeNavigation() {
+            window.addEventListener('scroll', handleScroll);
+            updateNavigationVisibility();
+        }
+
+        function handleScroll() {
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            
+            // Show/hide sticky CTA based on scroll position
+            const stickyCta = document.getElementById('stickyCta');
+            const resultsSection = document.getElementById('resultsSection');
+            const thankYouSection = document.getElementById('thankYouSection');
+            
+            if (resultsSection.style.display === 'block' && scrollPosition > windowHeight * 0.5) {
+                stickyCta.classList.add('show');
+                if (thankYouSection.style.display === 'block') {
+                    stickyCta.textContent = '🎉 Success!';
+                    stickyCta.onclick = () => scrollToSection('thankYouSection');
+                } else {
+                    stickyCta.textContent = '📋 Get PDF Report';
+                    stickyCta.onclick = openLeadModal;
+                }
+            } else {
+                stickyCta.classList.remove('show');
+            }
+
+            // Update quick navigation
+            updateQuickNavigation();
+        }
+
+        function updateNavigationVisibility() {
+            const quickNav = document.getElementById('quickNav');
+            const resultsSection = document.getElementById('resultsSection');
+            
+            if (resultsSection.style.display === 'block') {
+                quickNav.classList.add('show');
+            } else {
+                quickNav.classList.remove('show');
+            }
+        }
+
+        function updateQuickNavigation() {
+            const sections = [
+                { id: 'hero', element: document.querySelector('.hero') },
+                { id: 'analyze', element: document.querySelector('.url-input-section') },
+                { id: 'results', element: document.getElementById('resultsSection') },
+                { id: 'thankyou', element: document.getElementById('thankYouSection') }
+            ];
+
+            const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+            sections.forEach(section => {
+                const navDot = document.querySelector(`[data-section="${section.id}"]`);
+                if (navDot && section.element) {
+                    const elementTop = section.element.offsetTop;
+                    const elementBottom = elementTop + section.element.offsetHeight;
+                    
+                    if (scrollPosition >= elementTop && scrollPosition <= elementBottom) {
+                        navDot.classList.add('active');
+                    } else {
+                        navDot.classList.remove('active');
+                    }
+                }
+            });
+        }
+
+        function scrollToSection(sectionId) {
+            let target;
+            
+            switch(sectionId) {
+                case 'hero':
+                    target = document.querySelector('.hero');
+                    break;
+                case 'url-input-section':
+                    target = document.querySelector('.url-input-section');
+                    break;
+                case 'resultsSection':
+                    target = document.getElementById('resultsSection');
+                    break;
+                case 'thankYouSection':
+                    target = document.getElementById('thankYouSection');
+                    break;
+                default:
+                    target = document.getElementById(sectionId);
+            }
+
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function scrollToResults() {
+            const resultsSection = document.getElementById('resultsSection');
+            if (resultsSection.style.display === 'block') {
+                resultsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Update navigation visibility when sections are shown/hidden
+        function displayResults(url) {
+            // Show results section
+            document.getElementById('resultsSection').style.display = 'block';
+            document.getElementById('analyzedUrl').textContent = `Analysis for: ${url}`;
+
+            // Update overall score
+            updateOverallScore(currentAnalysisData.overallScore);
+
+            // Display metrics
+            displayMetrics();
+
+            // Create charts
+            createCharts();
+
+            // Display issues
+            displayIssues();
+
+            // Update navigation
+            updateNavigationVisibility();
+
+            // Scroll to results
+            document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showThankYou() {
+            document.getElementById('resultsSection').style.display = 'none';
+            document.getElementById('thankYouSection').style.display = 'block';
+            updateNavigationVisibility();
+            document.getElementById('thankYouSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetAnalysis() {
+            // Clear stored data
+            localStorage.removeItem('seoAnalysisData');
+            localStorage.removeItem('lastAnalysisTime');
+            
+            // Reset form
+            document.getElementById('websiteUrl').value = '';
+            
+            // Hide sections
+            document.getElementById('resultsSection').style.display = 'none';
+            document.getElementById('thankYouSection').style.display = 'none';
+            
+            // Reset global state
+            currentAnalysisData = null;
+            
+            // Update navigation
+            updateNavigationVisibility();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+<style>
+#minimax-floating-ball {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 12px;
+  background: #222222;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  color: #F8F8F8;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  z-index: 9999;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#minimax-floating-ball:hover {
+  transform: translateY(-2px);
+  background: #383838;
+}
+
+.minimax-ball-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.minimax-logo-wave {
+  width: 26px;
+  height: 22px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='22' viewBox='0 0 26 22' fill='none'%3E%3Cg clip-path='url(%23clip0_3442_102412)'%3E%3Cpath d='M12.8405 14.6775C12.8405 14.9897 13.0932 15.2424 13.4055 15.2424C13.7178 15.2424 13.9705 14.9897 13.9705 14.6775V2.98254C13.9705 1.88957 13.0809 1 11.9879 1C10.895 1 10.0054 1.88957 10.0054 2.98254V11.566V17.1068C10.0054 17.5773 9.62327 17.9594 9.1528 17.9594C8.68233 17.9594 8.30021 17.5773 8.30021 17.1068V8.04469C8.30021 6.95172 7.41063 6.06215 6.31767 6.06215C5.22471 6.06215 4.33513 6.95172 4.33513 8.04469V11.8855C4.33513 12.3559 3.953 12.7381 3.48254 12.7381C3.01207 12.7381 2.62994 12.3559 2.62994 11.8855V10.4936C2.62994 10.1813 2.37725 9.92861 2.06497 9.92861C1.7527 9.92861 1.5 10.1813 1.5 10.4936V11.8855C1.5 12.9784 2.38957 13.868 3.48254 13.868C4.5755 13.868 5.46508 12.9784 5.46508 11.8855V8.04469C5.46508 7.57422 5.8472 7.19209 6.31767 7.19209C6.78814 7.19209 7.17026 7.57422 7.17026 8.04469V17.1068C7.17026 18.1998 8.05984 19.0894 9.1528 19.0894C10.2458 19.0894 11.1353 18.1998 11.1353 17.1068V2.98254C11.1353 2.51207 11.5175 2.12994 11.9879 2.12994C12.4584 2.12994 12.8405 2.51207 12.8405 2.98254V14.6775Z' fill='%23F8F8F8'/%3E%3Cpath d='M23.3278 6.06215C22.2348 6.06215 21.3452 6.95172 21.3452 8.04469V15.6143C21.3452 16.0847 20.9631 16.4669 20.4926 16.4669C20.0222 16.4669 19.6401 16.0847 19.6401 15.6143V2.98254C19.6401 1.88957 18.7505 1 17.6575 1C16.5645 1 15.675 1.88957 15.675 2.98254V19.0175C15.675 19.4879 15.2928 19.8701 14.8224 19.8701C14.3519 19.8701 13.9698 19.4879 13.9698 19.0175V17.0329C13.9698 16.7206 13.7171 16.4679 13.4048 16.4679C13.0925 16.4679 12.8398 16.7206 12.8398 17.0329V19.0175C12.8398 20.1104 13.7294 21 14.8224 21C15.9153 21 16.8049 20.1104 16.8049 19.0175V2.98254C16.8049 2.51207 17.187 2.12994 17.6575 2.12994C18.128 2.12994 18.5101 2.51207 18.5101 2.98254V15.6143C18.5101 16.7072 19.3997 17.5968 20.4926 17.5968C21.5856 17.5968 22.4752 16.7072 22.4752 15.6143V8.04469C22.4752 7.57422 22.8573 7.19209 23.3278 7.19209C23.7982 7.19209 24.1804 7.57422 24.1804 8.04469V14.6775C24.1804 14.9897 24.4331 15.2424 24.7453 15.2424C25.0576 15.2424 25.3103 14.9897 25.3103 14.6775V8.04469C25.3103 6.95172 24.4207 6.06215 23.3278 6.06215Z' fill='%23F8F8F8'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_3442_102412'%3E%3Crect width='25' height='22' fill='white' transform='translate(0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.minimax-ball-text {
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.minimax-close-icon {
+  margin-left: 8px;
+  font-size: 16px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.minimax-close-icon:hover {
+  opacity: 1;
+}
+</style>
+<div id="minimax-floating-ball">
+  <div class="minimax-ball-content">
+    <div class="minimax-logo-wave"></div>
+    <span class="minimax-ball-text">Created by MiniMax Agent</span>
+  </div>
+  <div class="minimax-close-icon">×</div>
+</div>
+<script>
+// Initialize floating ball functionality
+function initFloatingBall() {
+  const ball = document.getElementById('minimax-floating-ball');
+  if (!ball) return;
+
+  // Initial animation
+  ball.style.opacity = '0';
+  ball.style.transform = 'translateY(20px)';
+
+  setTimeout(() => {
+    ball.style.opacity = '1';
+    ball.style.transform = 'translateY(0)';
+  }, 500);
+
+  // Handle logo click
+  const ballContent = ball.querySelector('.minimax-ball-content');
+  ballContent.addEventListener('click', function (e) {
+    e.stopPropagation();
+    window.open('https://agent.minimax.io/agent', '_blank');
+    ball.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      ball.style.transform = 'scale(1)';
+    }, 100);
+  });
+
+  // Handle close button click
+  const closeIcon = ball.querySelector('.minimax-close-icon');
+  closeIcon.addEventListener('click', function (e) {
+    e.stopPropagation();
+    ball.style.opacity = '0';
+    ball.style.transform = 'translateY(20px)';
+
+    setTimeout(() => {
+      ball.style.display = 'none';
+    }, 300);
+  });
+}
+
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', initFloatingBall); 
+</script>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Sample Professional SEO Report</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <h1>Generating Sample Professional SEO Report...</h1>
+    <button onclick="generateSampleReport()">Generate Sample Report</button>
+    
+    <script src="professional_pdf_generator.js"></script>
+    <script>
+        function generateSampleReport() {
+            // Sample analysis data
+            const analysisData = {
+                url: "https://example-business.com",
+                overallScore: 73,
+                aiReadinessScore: 55,
+                voiceSearchScore: 30,
+                eeAtScore: 65,
+                metrics: {
+                    technicalSeo: 78,
+                    contentQuality: 82,
+                    userExperience: 71,
+                    mobileOptimization: 89,
+                    pageSpeed: 67,
+                    aiSearchReadiness: 55,
+                    voiceSearchOptimization: 30,
+                    eeAtScore: 65,
+                    localSeo: 45,
+                    socialSignals: 52
+                },
+                issues: [
+                    {
+                        title: "Missing Voice Search Optimization",
+                        description: "Your website lacks conversational content structure needed for voice search queries. This critical gap affects your visibility in AI-powered search results.",
+                        priority: "critical",
+                        solution: [
+                            "Create comprehensive FAQ sections targeting 'how', 'what', 'where' questions",
+                            "Implement natural language content patterns",
+                            "Add location-specific voice search optimization",
+                            "Optimize for featured snippet capture with direct answers"
+                        ]
+                    },
+                    {
+                        title: "Incomplete Structured Data Implementation",
+                        description: "Missing essential schema markup prevents search engines from understanding your content context and business information.",
+                        priority: "high",
+                        solution: [
+                            "Implement Organization schema with complete business details",
+                            "Add LocalBusiness schema for local search optimization",
+                            "Create Article schema for content pages",
+                            "Set up Product/Service schema for commercial pages"
+                        ]
+                    }
+                ]
+            };
+
+            // Sample client data
+            const clientData = {
+                fullName: "Sarah Johnson",
+                company: "Digital Marketing Solutions Ltd",
+                websiteUrl: "https://example-business.com"
+            };
+
+            // Generate the professional PDF
+            window.downloadProfessionalSEOReport(analysisData, clientData);
+        }
+        
+        // Auto-generate on page load
+        window.onload = function() {
+            setTimeout(generateSampleReport, 1000);
+        }
+    </script>
+</body>
+</html>

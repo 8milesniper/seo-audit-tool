@@ -1,0 +1,3181 @@
+{
+    "pdf_info": [
+        {
+            "preproc_blocks": [
+                {
+                    "type": "title",
+                    "bbox": [
+                        56,
+                        151,
+                        258,
+                        174
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                58,
+                                156,
+                                256,
+                                171
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        58,
+                                        156,
+                                        256,
+                                        171
+                                    ],
+                                    "score": 1.0,
+                                    "content": "EXECUTIVE SUMMARY",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 0
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        55,
+                        186,
+                        527,
+                        230
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                57,
+                                188,
+                                525,
+                                202
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        57,
+                                        188,
+                                        525,
+                                        202
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Your website your-website.com achieved an overall SEO score of 73/100. This premium",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 1
+                        },
+                        {
+                            "bbox": [
+                                56,
+                                202,
+                                497,
+                                216
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        56,
+                                        202,
+                                        497,
+                                        216
+                                    ],
+                                    "score": 1.0,
+                                    "content": "analysis reveals 5 critical optimization opportunities with estimated ROI potential of",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 2
+                        },
+                        {
+                            "bbox": [
+                                55,
+                                215,
+                                266,
+                                230
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        55,
+                                        215,
+                                        112,
+                                        228
+                                    ],
+                                    "score": 0.84,
+                                    "content": "300{-}500\\%",
+                                    "type": "inline_equation",
+                                    "height": 13,
+                                    "width": 57
+                                },
+                                {
+                                    "bbox": [
+                                        112,
+                                        216,
+                                        266,
+                                        230
+                                    ],
+                                    "score": 1.0,
+                                    "content": " when properly implemented.",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 3
+                        }
+                    ],
+                    "index": 2
+                },
+                {
+                    "type": "title",
+                    "bbox": [
+                        56,
+                        261,
+                        253,
+                        282
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                58,
+                                266,
+                                250,
+                                280
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        58,
+                                        266,
+                                        250,
+                                        280
+                                    ],
+                                    "score": 1.0,
+                                    "content": "COMPETITIVE ANALYSIS",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 4
+                        }
+                    ],
+                    "index": 4
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        69,
+                        292,
+                        277,
+                        408
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                72,
+                                296,
+                                227,
+                                309
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        296,
+                                        227,
+                                        309
+                                    ],
+                                    "score": 1.0,
+                                    "content": "1. Top Competitor #1: 90/100",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 5
+                        },
+                        {
+                            "bbox": [
+                                78,
+                                314,
+                                255,
+                                328
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        78,
+                                        314,
+                                        255,
+                                        328
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Key Advantage: Strong content strategy",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 6
+                        },
+                        {
+                            "bbox": [
+                                70,
+                                336,
+                                227,
+                                349
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        70,
+                                        336,
+                                        227,
+                                        349
+                                    ],
+                                    "score": 1.0,
+                                    "content": "2. Top Competitor #2: 85/100",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 7
+                        },
+                        {
+                            "bbox": [
+                                78,
+                                354,
+                                245,
+                                367
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        78,
+                                        354,
+                                        245,
+                                        367
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Key Advantage: Better technical SEO",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 8
+                        },
+                        {
+                            "bbox": [
+                                70,
+                                376,
+                                227,
+                                389
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        70,
+                                        376,
+                                        227,
+                                        389
+                                    ],
+                                    "score": 1.0,
+                                    "content": "3. Top Competitor #3: 75/100",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 9
+                        },
+                        {
+                            "bbox": [
+                                78,
+                                394,
+                                275,
+                                406
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        78,
+                                        394,
+                                        275,
+                                        406
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Key Advantage: Weaker mobile optimization",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 10
+                        }
+                    ],
+                    "index": 7.5
+                },
+                {
+                    "type": "title",
+                    "bbox": [
+                        55,
+                        437,
+                        230,
+                        458
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                57,
+                                441,
+                                227,
+                                456
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        57,
+                                        441,
+                                        227,
+                                        456
+                                    ],
+                                    "score": 1.0,
+                                    "content": "30-DAY ACTION PLAN",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 11
+                        }
+                    ],
+                    "index": 11
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        114,
+                        469,
+                        367,
+                        486
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                113,
+                                471,
+                                365,
+                                486
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        113,
+                                        471,
+                                        365,
+                                        486
+                                    ],
+                                    "score": 1.0,
+                                    "content": "1. Optimize Core Web Vitals (LCP, FID, CLS)",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 12
+                        }
+                    ],
+                    "index": 12
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        112,
+                        489,
+                        305,
+                        513
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                112,
+                                489,
+                                304,
+                                502
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        112,
+                                        489,
+                                        192,
+                                        502
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Expected Impact:",
+                                    "type": "text"
+                                },
+                                {
+                                    "bbox": [
+                                        192,
+                                        489,
+                                        225,
+                                        501
+                                    ],
+                                    "score": 0.82,
+                                    "content": "+15{-}25",
+                                    "type": "inline_equation",
+                                    "height": 12,
+                                    "width": 33
+                                },
+                                {
+                                    "bbox": [
+                                        225,
+                                        489,
+                                        304,
+                                        502
+                                    ],
+                                    "score": 1.0,
+                                    "content": " ranking positions",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 13
+                        },
+                        {
+                            "bbox": [
+                                113,
+                                501,
+                                200,
+                                512
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        113,
+                                        501,
+                                        200,
+                                        512
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Timeline: Week 1-2",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 14
+                        }
+                    ],
+                    "index": 13.5
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        59,
+                        532,
+                        89,
+                        544
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                61,
+                                533,
+                                83,
+                                543
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        61,
+                                        533,
+                                        83,
+                                        543
+                                    ],
+                                    "score": 1.0,
+                                    "content": "HIGH",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 15
+                        }
+                    ],
+                    "index": 15
+                },
+                {
+                    "type": "title",
+                    "bbox": [
+                        112,
+                        527,
+                        327,
+                        542
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                113,
+                                528,
+                                324,
+                                543
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        113,
+                                        528,
+                                        324,
+                                        543
+                                    ],
+                                    "score": 1.0,
+                                    "content": "2. Implement structured data markup",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 16
+                        }
+                    ],
+                    "index": 16
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        113,
+                        545,
+                        312,
+                        570
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                112,
+                                545,
+                                310,
+                                559
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        112,
+                                        545,
+                                        192,
+                                        559
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Expected Impact:",
+                                    "type": "text"
+                                },
+                                {
+                                    "bbox": [
+                                        192,
+                                        546,
+                                        220,
+                                        557
+                                    ],
+                                    "score": 0.88,
+                                    "content": "+20\\%",
+                                    "type": "inline_equation",
+                                    "height": 11,
+                                    "width": 28
+                                },
+                                {
+                                    "bbox": [
+                                        220,
+                                        545,
+                                        310,
+                                        559
+                                    ],
+                                    "score": 1.0,
+                                    "content": " rich snippet visibility",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 17
+                        },
+                        {
+                            "bbox": [
+                                113,
+                                557,
+                                190,
+                                569
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        113,
+                                        557,
+                                        190,
+                                        569
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Timeline: Week 1",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 18
+                        }
+                    ],
+                    "index": 17.5
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        60,
+                        588,
+                        96,
+                        600
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                61,
+                                589,
+                                95,
+                                600
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        61,
+                                        589,
+                                        95,
+                                        600
+                                    ],
+                                    "score": 1.0,
+                                    "content": "MEDIUM",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 19
+                        }
+                    ],
+                    "index": 19
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        112,
+                        583,
+                        335,
+                        627
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                112,
+                                584,
+                                334,
+                                599
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        112,
+                                        585,
+                                        249,
+                                        599
+                                    ],
+                                    "score": 1.0,
+                                    "content": "3. Content gap analysis",
+                                    "type": "text"
+                                },
+                                {
+                                    "bbox": [
+                                        249,
+                                        584,
+                                        260,
+                                        597
+                                    ],
+                                    "score": 0.26,
+                                    "content": "\\pmb{\\&}",
+                                    "type": "inline_equation",
+                                    "height": 13,
+                                    "width": 11
+                                },
+                                {
+                                    "bbox": [
+                                        260,
+                                        585,
+                                        334,
+                                        599
+                                    ],
+                                    "score": 1.0,
+                                    "content": " optimization",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 20
+                        },
+                        {
+                            "bbox": [
+                                112,
+                                602,
+                                282,
+                                615
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        112,
+                                        603,
+                                        192,
+                                        615
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Expected Impact:",
+                                    "type": "text"
+                                },
+                                {
+                                    "bbox": [
+                                        192,
+                                        602,
+                                        220,
+                                        614
+                                    ],
+                                    "score": 0.88,
+                                    "content": "+40\\%",
+                                    "type": "inline_equation",
+                                    "height": 12,
+                                    "width": 28
+                                },
+                                {
+                                    "bbox": [
+                                        220,
+                                        603,
+                                        282,
+                                        615
+                                    ],
+                                    "score": 1.0,
+                                    "content": " organic traffic",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 21
+                        },
+                        {
+                            "bbox": [
+                                112,
+                                614,
+                                201,
+                                626
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        112,
+                                        614,
+                                        201,
+                                        626
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Timeline: Week 2-3",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 22
+                        }
+                    ],
+                    "index": 21
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        60,
+                        645,
+                        96,
+                        657
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                61,
+                                647,
+                                95,
+                                656
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        61,
+                                        647,
+                                        95,
+                                        656
+                                    ],
+                                    "score": 1.0,
+                                    "content": "MEDIUM",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 23
+                        }
+                    ],
+                    "index": 23
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        112,
+                        640,
+                        338,
+                        683
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                112,
+                                641,
+                                286,
+                                657
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        112,
+                                        641,
+                                        286,
+                                        657
+                                    ],
+                                    "score": 1.0,
+                                    "content": "4. Internal linking optimization",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 24
+                        },
+                        {
+                            "bbox": [
+                                112,
+                                659,
+                                337,
+                                672
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        112,
+                                        659,
+                                        192,
+                                        672
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Expected Impact:",
+                                    "type": "text"
+                                },
+                                {
+                                    "bbox": [
+                                        192,
+                                        659,
+                                        219,
+                                        671
+                                    ],
+                                    "score": 0.87,
+                                    "content": "+25\\%",
+                                    "type": "inline_equation",
+                                    "height": 12,
+                                    "width": 27
+                                },
+                                {
+                                    "bbox": [
+                                        220,
+                                        659,
+                                        337,
+                                        672
+                                    ],
+                                    "score": 1.0,
+                                    "content": " page authority distribution",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 25
+                        },
+                        {
+                            "bbox": [
+                                113,
+                                672,
+                                200,
+                                682
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        113,
+                                        672,
+                                        200,
+                                        682
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Timeline: Week 3-4",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 26
+                        }
+                    ],
+                    "index": 25
+                },
+                {
+                    "type": "title",
+                    "bbox": [
+                        56,
+                        692,
+                        279,
+                        713
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                56,
+                                696,
+                                277,
+                                710
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        56,
+                                        696,
+                                        277,
+                                        710
+                                    ],
+                                    "score": 1.0,
+                                    "content": "TECHNICAL SEO DEEP DIVE",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 27
+                        }
+                    ],
+                    "index": 27
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        70,
+                        724,
+                        263,
+                        740
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                71,
+                                726,
+                                261,
+                                741
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        726,
+                                        261,
+                                        741
+                                    ],
+                                    "score": 1.0,
+                                    "content": "SSL Certificate: Properly configured",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 28
+                        }
+                    ],
+                    "index": 28
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        69,
+                        734,
+                        388,
+                        832
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                70,
+                                748,
+                                384,
+                                764
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        70,
+                                        748,
+                                        384,
+                                        764
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Mobile Responsiveness: Needs optimization for tablet view",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 29
+                        },
+                        {
+                            "bbox": [
+                                71,
+                                772,
+                                353,
+                                785
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        772,
+                                        353,
+                                        785
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Site Speed: LCP of 3.2s exceeds recommended 2.5s",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 30
+                        },
+                        {
+                            "bbox": [
+                                70,
+                                794,
+                                318,
+                                809
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        70,
+                                        794,
+                                        238,
+                                        809
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Meta Tags: Well optimized with",
+                                    "type": "text"
+                                },
+                                {
+                                    "bbox": [
+                                        239,
+                                        794,
+                                        265,
+                                        807
+                                    ],
+                                    "score": 0.84,
+                                    "content": "89\\%",
+                                    "type": "inline_equation",
+                                    "height": 13,
+                                    "width": 26
+                                },
+                                {
+                                    "bbox": [
+                                        265,
+                                        794,
+                                        318,
+                                        809
+                                    ],
+                                    "score": 1.0,
+                                    "content": " coverage",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 31
+                        },
+                        {
+                            "bbox": [
+                                70,
+                                817,
+                                379,
+                                832
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        70,
+                                        817,
+                                        379,
+                                        832
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Schema Markup: Missing critical product/service schemas",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 32
+                        }
+                    ],
+                    "index": 30.5
+                }
+            ],
+            "layout_bboxes": [],
+            "page_idx": 0,
+            "page_size": [
+                595.280029296875,
+                841.8900146484375
+            ],
+            "_layout_tree": [],
+            "images": [],
+            "tables": [],
+            "interline_equations": [],
+            "discarded_blocks": [
+                {
+                    "type": "discarded",
+                    "bbox": [
+                        1,
+                        0,
+                        595,
+                        113
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                169,
+                                38,
+                                517,
+                                59
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        169,
+                                        38,
+                                        343,
+                                        59
+                                    ],
+                                    "score": 1.0,
+                                    "content": "8 MILE SNIPER",
+                                    "type": "text"
+                                },
+                                {
+                                    "bbox": [
+                                        475,
+                                        39,
+                                        517,
+                                        52
+                                    ],
+                                    "score": 1.0,
+                                    "content": "PREMIUM",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        {
+                            "bbox": [
+                                168,
+                                65,
+                                380,
+                                83
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        168,
+                                        65,
+                                        380,
+                                        83
+                                    ],
+                                    "score": 1.0,
+                                    "content": "PREMIUM SEO AUDIT REPORT",
+                                    "type": "text"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "need_drop": false,
+            "drop_reason": [],
+            "para_blocks": [
+                {
+                    "type": "title",
+                    "bbox": [
+                        56,
+                        151,
+                        258,
+                        174
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                58,
+                                156,
+                                256,
+                                171
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        58,
+                                        156,
+                                        256,
+                                        171
+                                    ],
+                                    "score": 1.0,
+                                    "content": "EXECUTIVE SUMMARY",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 0
+                        }
+                    ],
+                    "index": 0,
+                    "page_num": "page_0",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ]
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        55,
+                        186,
+                        527,
+                        230
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                57,
+                                188,
+                                525,
+                                202
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        57,
+                                        188,
+                                        525,
+                                        202
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Your website your-website.com achieved an overall SEO score of 73/100. This premium",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 1
+                        },
+                        {
+                            "bbox": [
+                                56,
+                                202,
+                                497,
+                                216
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        56,
+                                        202,
+                                        497,
+                                        216
+                                    ],
+                                    "score": 1.0,
+                                    "content": "analysis reveals 5 critical optimization opportunities with estimated ROI potential of",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 2
+                        },
+                        {
+                            "bbox": [
+                                55,
+                                215,
+                                266,
+                                230
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        55,
+                                        215,
+                                        112,
+                                        228
+                                    ],
+                                    "score": 0.84,
+                                    "content": "300{-}500\\%",
+                                    "type": "inline_equation",
+                                    "height": 13,
+                                    "width": 57
+                                },
+                                {
+                                    "bbox": [
+                                        112,
+                                        216,
+                                        266,
+                                        230
+                                    ],
+                                    "score": 1.0,
+                                    "content": " when properly implemented.",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 3
+                        }
+                    ],
+                    "index": 2,
+                    "page_num": "page_0",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ],
+                    "bbox_fs": [
+                        55,
+                        188,
+                        525,
+                        230
+                    ]
+                },
+                {
+                    "type": "title",
+                    "bbox": [
+                        56,
+                        261,
+                        253,
+                        282
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                58,
+                                266,
+                                250,
+                                280
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        58,
+                                        266,
+                                        250,
+                                        280
+                                    ],
+                                    "score": 1.0,
+                                    "content": "COMPETITIVE ANALYSIS",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 4
+                        }
+                    ],
+                    "index": 4,
+                    "page_num": "page_0",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ]
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        69,
+                        292,
+                        277,
+                        408
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                72,
+                                296,
+                                227,
+                                309
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        296,
+                                        227,
+                                        309
+                                    ],
+                                    "score": 1.0,
+                                    "content": "1. Top Competitor #1: 90/100",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 5
+                        },
+                        {
+                            "bbox": [
+                                78,
+                                314,
+                                255,
+                                328
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        78,
+                                        314,
+                                        255,
+                                        328
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Key Advantage: Strong content strategy",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 6
+                        },
+                        {
+                            "bbox": [
+                                70,
+                                336,
+                                227,
+                                349
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        70,
+                                        336,
+                                        227,
+                                        349
+                                    ],
+                                    "score": 1.0,
+                                    "content": "2. Top Competitor #2: 85/100",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 7
+                        },
+                        {
+                            "bbox": [
+                                78,
+                                354,
+                                245,
+                                367
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        78,
+                                        354,
+                                        245,
+                                        367
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Key Advantage: Better technical SEO",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 8
+                        },
+                        {
+                            "bbox": [
+                                70,
+                                376,
+                                227,
+                                389
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        70,
+                                        376,
+                                        227,
+                                        389
+                                    ],
+                                    "score": 1.0,
+                                    "content": "3. Top Competitor #3: 75/100",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 9
+                        },
+                        {
+                            "bbox": [
+                                78,
+                                394,
+                                275,
+                                406
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        78,
+                                        394,
+                                        275,
+                                        406
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Key Advantage: Weaker mobile optimization",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 10
+                        }
+                    ],
+                    "index": 7.5,
+                    "page_num": "page_0",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ],
+                    "bbox_fs": [
+                        70,
+                        296,
+                        275,
+                        406
+                    ]
+                },
+                {
+                    "type": "title",
+                    "bbox": [
+                        55,
+                        437,
+                        230,
+                        458
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                57,
+                                441,
+                                227,
+                                456
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        57,
+                                        441,
+                                        227,
+                                        456
+                                    ],
+                                    "score": 1.0,
+                                    "content": "30-DAY ACTION PLAN",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 11
+                        }
+                    ],
+                    "index": 11,
+                    "page_num": "page_0",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ]
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        114,
+                        469,
+                        367,
+                        486
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                113,
+                                471,
+                                365,
+                                486
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        113,
+                                        471,
+                                        365,
+                                        486
+                                    ],
+                                    "score": 1.0,
+                                    "content": "1. Optimize Core Web Vitals (LCP, FID, CLS)",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 12
+                        }
+                    ],
+                    "index": 12,
+                    "page_num": "page_0",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ],
+                    "bbox_fs": [
+                        113,
+                        471,
+                        365,
+                        486
+                    ]
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        112,
+                        489,
+                        305,
+                        513
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                112,
+                                489,
+                                304,
+                                502
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        112,
+                                        489,
+                                        192,
+                                        502
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Expected Impact:",
+                                    "type": "text"
+                                },
+                                {
+                                    "bbox": [
+                                        192,
+                                        489,
+                                        225,
+                                        501
+                                    ],
+                                    "score": 0.82,
+                                    "content": "+15{-}25",
+                                    "type": "inline_equation",
+                                    "height": 12,
+                                    "width": 33
+                                },
+                                {
+                                    "bbox": [
+                                        225,
+                                        489,
+                                        304,
+                                        502
+                                    ],
+                                    "score": 1.0,
+                                    "content": " ranking positions",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 13
+                        },
+                        {
+                            "bbox": [
+                                113,
+                                501,
+                                200,
+                                512
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        113,
+                                        501,
+                                        200,
+                                        512
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Timeline: Week 1-2",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 14
+                        }
+                    ],
+                    "index": 13.5,
+                    "page_num": "page_0",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ],
+                    "bbox_fs": [
+                        112,
+                        489,
+                        304,
+                        512
+                    ]
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        59,
+                        532,
+                        89,
+                        544
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                61,
+                                533,
+                                83,
+                                543
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        61,
+                                        533,
+                                        83,
+                                        543
+                                    ],
+                                    "score": 1.0,
+                                    "content": "HIGH",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 15
+                        }
+                    ],
+                    "index": 15,
+                    "page_num": "page_0",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ],
+                    "bbox_fs": [
+                        61,
+                        533,
+                        83,
+                        543
+                    ]
+                },
+                {
+                    "type": "title",
+                    "bbox": [
+                        112,
+                        527,
+                        327,
+                        542
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                113,
+                                528,
+                                324,
+                                543
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        113,
+                                        528,
+                                        324,
+                                        543
+                                    ],
+                                    "score": 1.0,
+                                    "content": "2. Implement structured data markup",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 16
+                        }
+                    ],
+                    "index": 16,
+                    "page_num": "page_0",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ]
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        113,
+                        545,
+                        312,
+                        570
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                112,
+                                545,
+                                310,
+                                559
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        112,
+                                        545,
+                                        192,
+                                        559
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Expected Impact:",
+                                    "type": "text"
+                                },
+                                {
+                                    "bbox": [
+                                        192,
+                                        546,
+                                        220,
+                                        557
+                                    ],
+                                    "score": 0.88,
+                                    "content": "+20\\%",
+                                    "type": "inline_equation",
+                                    "height": 11,
+                                    "width": 28
+                                },
+                                {
+                                    "bbox": [
+                                        220,
+                                        545,
+                                        310,
+                                        559
+                                    ],
+                                    "score": 1.0,
+                                    "content": " rich snippet visibility",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 17
+                        },
+                        {
+                            "bbox": [
+                                113,
+                                557,
+                                190,
+                                569
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        113,
+                                        557,
+                                        190,
+                                        569
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Timeline: Week 1",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 18
+                        }
+                    ],
+                    "index": 17.5,
+                    "page_num": "page_0",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ],
+                    "bbox_fs": [
+                        112,
+                        545,
+                        310,
+                        569
+                    ]
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        60,
+                        588,
+                        96,
+                        600
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                61,
+                                589,
+                                95,
+                                600
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        61,
+                                        589,
+                                        95,
+                                        600
+                                    ],
+                                    "score": 1.0,
+                                    "content": "MEDIUM",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 19
+                        }
+                    ],
+                    "index": 19,
+                    "page_num": "page_0",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ],
+                    "bbox_fs": [
+                        61,
+                        589,
+                        95,
+                        600
+                    ]
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        112,
+                        583,
+                        335,
+                        627
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                112,
+                                584,
+                                334,
+                                599
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        112,
+                                        585,
+                                        249,
+                                        599
+                                    ],
+                                    "score": 1.0,
+                                    "content": "3. Content gap analysis",
+                                    "type": "text"
+                                },
+                                {
+                                    "bbox": [
+                                        249,
+                                        584,
+                                        260,
+                                        597
+                                    ],
+                                    "score": 0.26,
+                                    "content": "\\pmb{\\&}",
+                                    "type": "inline_equation",
+                                    "height": 13,
+                                    "width": 11
+                                },
+                                {
+                                    "bbox": [
+                                        260,
+                                        585,
+                                        334,
+                                        599
+                                    ],
+                                    "score": 1.0,
+                                    "content": " optimization",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 20
+                        },
+                        {
+                            "bbox": [
+                                112,
+                                602,
+                                282,
+                                615
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        112,
+                                        603,
+                                        192,
+                                        615
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Expected Impact:",
+                                    "type": "text"
+                                },
+                                {
+                                    "bbox": [
+                                        192,
+                                        602,
+                                        220,
+                                        614
+                                    ],
+                                    "score": 0.88,
+                                    "content": "+40\\%",
+                                    "type": "inline_equation",
+                                    "height": 12,
+                                    "width": 28
+                                },
+                                {
+                                    "bbox": [
+                                        220,
+                                        603,
+                                        282,
+                                        615
+                                    ],
+                                    "score": 1.0,
+                                    "content": " organic traffic",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 21
+                        },
+                        {
+                            "bbox": [
+                                112,
+                                614,
+                                201,
+                                626
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        112,
+                                        614,
+                                        201,
+                                        626
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Timeline: Week 2-3",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 22
+                        }
+                    ],
+                    "index": 21,
+                    "page_num": "page_0",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ],
+                    "bbox_fs": [
+                        112,
+                        584,
+                        334,
+                        626
+                    ]
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        60,
+                        645,
+                        96,
+                        657
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                61,
+                                647,
+                                95,
+                                656
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        61,
+                                        647,
+                                        95,
+                                        656
+                                    ],
+                                    "score": 1.0,
+                                    "content": "MEDIUM",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 23
+                        }
+                    ],
+                    "index": 23,
+                    "page_num": "page_0",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ],
+                    "bbox_fs": [
+                        61,
+                        647,
+                        95,
+                        656
+                    ]
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        112,
+                        640,
+                        338,
+                        683
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                112,
+                                641,
+                                286,
+                                657
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        112,
+                                        641,
+                                        286,
+                                        657
+                                    ],
+                                    "score": 1.0,
+                                    "content": "4. Internal linking optimization",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 24
+                        },
+                        {
+                            "bbox": [
+                                112,
+                                659,
+                                337,
+                                672
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        112,
+                                        659,
+                                        192,
+                                        672
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Expected Impact:",
+                                    "type": "text"
+                                },
+                                {
+                                    "bbox": [
+                                        192,
+                                        659,
+                                        219,
+                                        671
+                                    ],
+                                    "score": 0.87,
+                                    "content": "+25\\%",
+                                    "type": "inline_equation",
+                                    "height": 12,
+                                    "width": 27
+                                },
+                                {
+                                    "bbox": [
+                                        220,
+                                        659,
+                                        337,
+                                        672
+                                    ],
+                                    "score": 1.0,
+                                    "content": " page authority distribution",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 25
+                        },
+                        {
+                            "bbox": [
+                                113,
+                                672,
+                                200,
+                                682
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        113,
+                                        672,
+                                        200,
+                                        682
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Timeline: Week 3-4",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 26
+                        }
+                    ],
+                    "index": 25,
+                    "page_num": "page_0",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ],
+                    "bbox_fs": [
+                        112,
+                        641,
+                        337,
+                        682
+                    ]
+                },
+                {
+                    "type": "title",
+                    "bbox": [
+                        56,
+                        692,
+                        279,
+                        713
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                56,
+                                696,
+                                277,
+                                710
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        56,
+                                        696,
+                                        277,
+                                        710
+                                    ],
+                                    "score": 1.0,
+                                    "content": "TECHNICAL SEO DEEP DIVE",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 27
+                        }
+                    ],
+                    "index": 27,
+                    "page_num": "page_0",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ]
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        70,
+                        724,
+                        263,
+                        740
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                71,
+                                726,
+                                261,
+                                741
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        726,
+                                        261,
+                                        741
+                                    ],
+                                    "score": 1.0,
+                                    "content": "SSL Certificate: Properly configured",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 28
+                        }
+                    ],
+                    "index": 28,
+                    "page_num": "page_0",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ],
+                    "bbox_fs": [
+                        71,
+                        726,
+                        261,
+                        741
+                    ]
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        69,
+                        734,
+                        388,
+                        832
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                70,
+                                748,
+                                384,
+                                764
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        70,
+                                        748,
+                                        384,
+                                        764
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Mobile Responsiveness: Needs optimization for tablet view",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 29
+                        },
+                        {
+                            "bbox": [
+                                71,
+                                772,
+                                353,
+                                785
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        772,
+                                        353,
+                                        785
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Site Speed: LCP of 3.2s exceeds recommended 2.5s",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 30
+                        },
+                        {
+                            "bbox": [
+                                70,
+                                794,
+                                318,
+                                809
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        70,
+                                        794,
+                                        238,
+                                        809
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Meta Tags: Well optimized with",
+                                    "type": "text"
+                                },
+                                {
+                                    "bbox": [
+                                        239,
+                                        794,
+                                        265,
+                                        807
+                                    ],
+                                    "score": 0.84,
+                                    "content": "89\\%",
+                                    "type": "inline_equation",
+                                    "height": 13,
+                                    "width": 26
+                                },
+                                {
+                                    "bbox": [
+                                        265,
+                                        794,
+                                        318,
+                                        809
+                                    ],
+                                    "score": 1.0,
+                                    "content": " coverage",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 31
+                        },
+                        {
+                            "bbox": [
+                                70,
+                                817,
+                                379,
+                                832
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        70,
+                                        817,
+                                        379,
+                                        832
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Schema Markup: Missing critical product/service schemas",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 32
+                        }
+                    ],
+                    "index": 30.5,
+                    "page_num": "page_0",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ],
+                    "bbox_fs": [
+                        70,
+                        748,
+                        384,
+                        832
+                    ]
+                }
+            ]
+        },
+        {
+            "preproc_blocks": [
+                {
+                    "type": "title",
+                    "bbox": [
+                        55,
+                        41,
+                        189,
+                        60
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                56,
+                                43,
+                                188,
+                                59
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        56,
+                                        43,
+                                        188,
+                                        59
+                                    ],
+                                    "score": 1.0,
+                                    "content": "PROJECTED ROI",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 0
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "type": "title",
+                    "bbox": [
+                        70,
+                        86,
+                        366,
+                        102
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                71,
+                                88,
+                                365,
+                                102
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        88,
+                                        365,
+                                        102
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Expected Results After Full Implementation:",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 1
+                        }
+                    ],
+                    "index": 1
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        70,
+                        107,
+                        337,
+                        163
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                70,
+                                107,
+                                336,
+                                123
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        70,
+                                        108,
+                                        76,
+                                        123
+                                    ],
+                                    "score": 1.0,
+                                    "content": "•",
+                                    "type": "text"
+                                },
+                                {
+                                    "bbox": [
+                                        77,
+                                        107,
+                                        120,
+                                        121
+                                    ],
+                                    "score": 0.83,
+                                    "content": "40–60\\%",
+                                    "type": "inline_equation",
+                                    "height": 14,
+                                    "width": 43
+                                },
+                                {
+                                    "bbox": [
+                                        121,
+                                        108,
+                                        336,
+                                        123
+                                    ],
+                                    "score": 1.0,
+                                    "content": " increase in organic traffic within 90 days",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 2
+                        },
+                        {
+                            "bbox": [
+                                71,
+                                127,
+                                297,
+                                141
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        128,
+                                        76,
+                                        141
+                                    ],
+                                    "score": 1.0,
+                                    "content": "•",
+                                    "type": "text"
+                                },
+                                {
+                                    "bbox": [
+                                        76,
+                                        127,
+                                        120,
+                                        141
+                                    ],
+                                    "score": 0.83,
+                                    "content": "25{-}35\\%",
+                                    "type": "inline_equation",
+                                    "height": 14,
+                                    "width": 44
+                                },
+                                {
+                                    "bbox": [
+                                        121,
+                                        128,
+                                        297,
+                                        141
+                                    ],
+                                    "score": 1.0,
+                                    "content": " improvement in conversion rates",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 3
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                147,
+                                323,
+                                161
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        148,
+                                        76,
+                                        161
+                                    ],
+                                    "score": 1.0,
+                                    "content": "•",
+                                    "type": "text"
+                                },
+                                {
+                                    "bbox": [
+                                        76,
+                                        147,
+                                        176,
+                                        161
+                                    ],
+                                    "score": 0.72,
+                                    "content": "\\Phi15,000-\\Phi50,000\\",
+                                    "type": "inline_equation",
+                                    "height": 14,
+                                    "width": 100
+                                },
+                                {
+                                    "bbox": [
+                                        177,
+                                        148,
+                                        323,
+                                        161
+                                    ],
+                                    "score": 1.0,
+                                    "content": " additional monthly revenue",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 4
+                        }
+                    ],
+                    "index": 3
+                },
+                {
+                    "type": "title",
+                    "bbox": [
+                        56,
+                        199,
+                        145,
+                        215
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                56,
+                                200,
+                                144,
+                                214
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        56,
+                                        200,
+                                        144,
+                                        214
+                                    ],
+                                    "score": 1.0,
+                                    "content": "NEXT STEPS",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 5
+                        }
+                    ],
+                    "index": 5
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        57,
+                        229,
+                        336,
+                        278
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                56,
+                                231,
+                                301,
+                                244
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        56,
+                                        231,
+                                        301,
+                                        244
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Ready to implement these recommendations?",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 6
+                        },
+                        {
+                            "bbox": [
+                                56,
+                                247,
+                                334,
+                                263
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        56,
+                                        247,
+                                        334,
+                                        263
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Contact us for personalized implementation support:",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 7
+                        },
+                        {
+                            "bbox": [
+                                57,
+                                266,
+                                233,
+                                278
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        57,
+                                        266,
+                                        233,
+                                        278
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Email: support@8milesniper.com",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 8
+                        }
+                    ],
+                    "index": 7
+                }
+            ],
+            "layout_bboxes": [],
+            "page_idx": 1,
+            "page_size": [
+                595.280029296875,
+                841.8900146484375
+            ],
+            "_layout_tree": [],
+            "images": [],
+            "tables": [],
+            "interline_equations": [],
+            "discarded_blocks": [
+                {
+                    "type": "discarded",
+                    "bbox": [
+                        0,
+                        799,
+                        595,
+                        841
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                55,
+                                811,
+                                526,
+                                824
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        55,
+                                        811,
+                                        266,
+                                        823
+                                    ],
+                                    "score": 1.0,
+                                    "content": "© 2025 8 Mile Sniper - Premium SEO Intelligence Platform",
+                                    "type": "text"
+                                },
+                                {
+                                    "bbox": [
+                                        423,
+                                        811,
+                                        526,
+                                        824
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Report generated: 7/3/2025",
+                                    "type": "text"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "need_drop": false,
+            "drop_reason": [],
+            "para_blocks": [
+                {
+                    "type": "title",
+                    "bbox": [
+                        55,
+                        41,
+                        189,
+                        60
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                56,
+                                43,
+                                188,
+                                59
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        56,
+                                        43,
+                                        188,
+                                        59
+                                    ],
+                                    "score": 1.0,
+                                    "content": "PROJECTED ROI",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 0
+                        }
+                    ],
+                    "index": 0,
+                    "page_num": "page_1",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ]
+                },
+                {
+                    "type": "title",
+                    "bbox": [
+                        70,
+                        86,
+                        366,
+                        102
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                71,
+                                88,
+                                365,
+                                102
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        88,
+                                        365,
+                                        102
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Expected Results After Full Implementation:",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 1
+                        }
+                    ],
+                    "index": 1,
+                    "page_num": "page_1",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ]
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        70,
+                        107,
+                        337,
+                        163
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                70,
+                                107,
+                                336,
+                                123
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        70,
+                                        108,
+                                        76,
+                                        123
+                                    ],
+                                    "score": 1.0,
+                                    "content": "•",
+                                    "type": "text"
+                                },
+                                {
+                                    "bbox": [
+                                        77,
+                                        107,
+                                        120,
+                                        121
+                                    ],
+                                    "score": 0.83,
+                                    "content": "40–60\\%",
+                                    "type": "inline_equation",
+                                    "height": 14,
+                                    "width": 43
+                                },
+                                {
+                                    "bbox": [
+                                        121,
+                                        108,
+                                        336,
+                                        123
+                                    ],
+                                    "score": 1.0,
+                                    "content": " increase in organic traffic within 90 days",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 2
+                        },
+                        {
+                            "bbox": [
+                                71,
+                                127,
+                                297,
+                                141
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        128,
+                                        76,
+                                        141
+                                    ],
+                                    "score": 1.0,
+                                    "content": "•",
+                                    "type": "text"
+                                },
+                                {
+                                    "bbox": [
+                                        76,
+                                        127,
+                                        120,
+                                        141
+                                    ],
+                                    "score": 0.83,
+                                    "content": "25{-}35\\%",
+                                    "type": "inline_equation",
+                                    "height": 14,
+                                    "width": 44
+                                },
+                                {
+                                    "bbox": [
+                                        121,
+                                        128,
+                                        297,
+                                        141
+                                    ],
+                                    "score": 1.0,
+                                    "content": " improvement in conversion rates",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 3
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                147,
+                                323,
+                                161
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        148,
+                                        76,
+                                        161
+                                    ],
+                                    "score": 1.0,
+                                    "content": "•",
+                                    "type": "text"
+                                },
+                                {
+                                    "bbox": [
+                                        76,
+                                        147,
+                                        176,
+                                        161
+                                    ],
+                                    "score": 0.72,
+                                    "content": "\\Phi15,000-\\Phi50,000\\",
+                                    "type": "inline_equation",
+                                    "height": 14,
+                                    "width": 100
+                                },
+                                {
+                                    "bbox": [
+                                        177,
+                                        148,
+                                        323,
+                                        161
+                                    ],
+                                    "score": 1.0,
+                                    "content": " additional monthly revenue",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 4
+                        }
+                    ],
+                    "index": 3,
+                    "page_num": "page_1",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ],
+                    "bbox_fs": [
+                        70,
+                        107,
+                        336,
+                        161
+                    ]
+                },
+                {
+                    "type": "title",
+                    "bbox": [
+                        56,
+                        199,
+                        145,
+                        215
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                56,
+                                200,
+                                144,
+                                214
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        56,
+                                        200,
+                                        144,
+                                        214
+                                    ],
+                                    "score": 1.0,
+                                    "content": "NEXT STEPS",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 5
+                        }
+                    ],
+                    "index": 5,
+                    "page_num": "page_1",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ]
+                },
+                {
+                    "type": "text",
+                    "bbox": [
+                        57,
+                        229,
+                        336,
+                        278
+                    ],
+                    "lines": [
+                        {
+                            "bbox": [
+                                56,
+                                231,
+                                301,
+                                244
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        56,
+                                        231,
+                                        301,
+                                        244
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Ready to implement these recommendations?",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 6
+                        },
+                        {
+                            "bbox": [
+                                56,
+                                247,
+                                334,
+                                263
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        56,
+                                        247,
+                                        334,
+                                        263
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Contact us for personalized implementation support:",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 7
+                        },
+                        {
+                            "bbox": [
+                                57,
+                                266,
+                                233,
+                                278
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        57,
+                                        266,
+                                        233,
+                                        278
+                                    ],
+                                    "score": 1.0,
+                                    "content": "Email: support@8milesniper.com",
+                                    "type": "text"
+                                }
+                            ],
+                            "index": 8
+                        }
+                    ],
+                    "index": 7,
+                    "page_num": "page_1",
+                    "page_size": [
+                        595.280029296875,
+                        841.8900146484375
+                    ],
+                    "bbox_fs": [
+                        56,
+                        231,
+                        334,
+                        278
+                    ]
+                }
+            ]
+        }
+    ],
+    "_parse_type": "txt",
+    "_version_name": "0.10.6"
+}
