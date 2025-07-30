@@ -40,14 +40,15 @@ function App() {
               <Router>
                 <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-amber-900">
                   <Routes>
-                    {/* Public Routes */}
+
+                    {/* 🔓 Public Routes */}
                     <Route path="/" element={<LandingPage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterPage />} />
                     <Route path="/pricing" element={<PricingPage />} />
                     <Route path="/audit" element={<AuditDashboard />} />
-                    
-                    {/* Protected Routes */}
+
+                    {/* 🔐 Protected Routes */}
                     <Route 
                       path="/dashboard" 
                       element={
@@ -78,10 +79,7 @@ function App() {
                         </ProtectedRoute>
                       } 
                     />
-                    <Route 
-                      path="/payment-success" 
-                      element={<PaymentSuccess />} 
-                    />
+                    <Route path="/payment-success" element={<PaymentSuccess />} />
                     <Route 
                       path="/white-label" 
                       element={
@@ -92,8 +90,8 @@ function App() {
                         </ProtectedRoute>
                       } 
                     />
-                    
-                    {/* Admin Routes */}
+
+                    {/* 🛡️ Admin Routes */}
                     <Route 
                       path="/admin" 
                       element={
@@ -114,12 +112,13 @@ function App() {
                         </AdminRoute>
                       } 
                     />
-                    
-                    {/* Catch all - redirect to home */}
+
+                    {/* ⛔ Catch-all redirect */}
                     <Route path="*" element={<Navigate to="/" replace />} />
+                    
                   </Routes>
-                  
-                  {/* Global Toast Notifications */}
+
+                  {/* 🔔 Global Toast Notifications */}
                   <Toaster
                     position="top-right"
                     toastOptions={{
@@ -153,4 +152,4 @@ function App() {
   )
 }
 
-export default App
+export default Ap
