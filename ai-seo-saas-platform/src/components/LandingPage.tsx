@@ -1,161 +1,228 @@
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 
-const PricingTable = () => {
-  const tiers = [
-    {
-      title: "White Label Basic",
-      price: "$349",
-      features: [
-        "✅ Unlimited audit reports",
-        "✅ Branded reports (your logo)",
-        "✅ Hosted on our subdomain (you.8milesniper.com)",
-        "✅ Shareable live report links",
-        "🚫 No custom domain",
-        "🚫 No UI/theme control",
-        "🚫 No resale rights",
-        "📧 Email-only support"
-      ]
-    },
-    {
-      title: "White Label Premium",
-      price: "$549",
-      features: [
-        "✅ Unlimited audit reports",
-        "✅ All Basic features included",
-        "✅ Your custom domain (yourdomain.com)",
-        "✅ Full theme/UI control",
-        "✅ Priority support",
-        "🚫 No resale rights"
-      ]
-    },
-    {
-      title: "Commercial License",
-      price: "$950",
-      features: [
-        "✅ Unlimited audit reports",
-        "✅ API access",
-        "✅ Revenue-ready resale license",
-        "✅ Full white label + custom domain",
-        "✅ Dedicated onboarding & training",
-        "✅ Full support"
-      ]
-    }
-  ];
-
+const LandingPage = () => {
   return (
-    <div className="bg-[#0a0f1c] text-white py-16 px-4">
-      <h2 className="text-3xl md:text-4xl text-center font-bold mb-10">Choose Your White Label Plan</h2>
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        {tiers.map((tier, idx) => (
-          <div key={idx} className="bg-[#141d2b] p-6 rounded-lg shadow-md border border-gray-800">
-            <h3 className="text-xl font-bold mb-2">{tier.title}</h3>
-            <p className="text-3xl font-bold text-orange-500 mb-4">{tier.price}</p>
-            <ul className="space-y-2">
-              {tier.features.map((f, i) => (
-                <li key={i} className="flex items-center">
-                  <FaCheckCircle className="text-orange-500 mr-2" />
-                  <span>{f}</span>
-                </li>
-              ))}
+    <div className="min-h-screen bg-gradient-to-b from-[#152236] to-[#6f3600] text-yellow-400 font-sans">
+      {/* Header Section */}
+      <header className="max-w-7xl mx-auto px-6 pt-16 text-center">
+        <img
+          src="/logo.png"
+          alt="8 Mile Sniper"
+          className="mx-auto mb-6 w-36"
+        />
+        <h1 className="text-5xl font-extrabold mb-2">
+          Master SEO & AI Search Domination in <br />
+          <span className="text-yellow-400">2025</span>
+        </h1>
+        <p className="mt-2 text-sm max-w-xl mx-auto">
+          The ONLY comprehensive audit that checks your SEO + AI readiness for
+          ChatGPT, voice search, and the future of search engines.
+        </p>
+        <p className="mt-1 text-xs italic">Audited over 1500 sites - Results in minutes</p>
+
+        <div className="mt-8 flex justify-center gap-4">
+          <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-2 px-6 rounded transition">
+            Start Free SEO & AI Analysis
+          </button>
+          <button className="bg-yellow-700 hover:bg-yellow-800 text-white font-semibold py-2 px-6 rounded transition border border-yellow-400">
+            Get the Full Audit – $47
+          </button>
+        </div>
+      </header>
+
+      {/* Why We're The Only Section */}
+      <section className="max-w-7xl mx-auto px-6 mt-24">
+        <h2 className="text-center text-yellow-400 font-semibold mb-6">
+          Why We're the ONLY Choice for 2025
+        </h2>
+        <div className="flex flex-col md:flex-row md:justify-center md:gap-12">
+          <ul className="space-y-2 text-sm md:w-1/2 list-disc list-inside">
+            <li>Full 2025 AI Search Analysis</li>
+            <li>SEO + Structured Schema Checks</li>
+            <li>ChatGPT & LLM Content Optimization</li>
+            <li>Voice Search Readiness</li>
+            <li>EEAT + Trust Factor Scoring</li>
+            <li>Delivered as Live, Shareable Report Link</li>
+            <li>Branded Report Experience</li>
+            <li>Results in Minutes</li>
+          </ul>
+          <div className="bg-yellow-500 w-48 h-48 rounded-lg flex items-center justify-center mt-8 md:mt-0 md:w-60 md:h-60">
+            <span className="text-black font-bold">AI-Powered Report Preview</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Smarter SEO Starts Here */}
+      <section className="max-w-7xl mx-auto px-6 mt-24 text-center">
+        <h3 className="mb-8 font-semibold">Smarter SEO Starts Here</h3>
+        <div className="grid grid-cols-3 md:grid-cols-7 gap-6 max-w-xl mx-auto">
+          {[
+            { icon: "🤖", label: "AI-Powered SEO Engine" },
+            { icon: "📊", label: "150+ SEO/AI Ranking Factors" },
+            { icon: "💬", label: "LLM & ChatGPT Optimization" },
+            { icon: "🎤", label: "Voice Search Scoring" },
+            { icon: "⭐", label: "EEAT + Trust Analysis" },
+            { icon: "✅", label: "Structured Data Validation" },
+          ].map(({ icon, label }) => (
+            <div
+              key={label}
+              className="bg-[#222f44] rounded-lg p-4 flex flex-col items-center justify-center text-xs"
+            >
+              <span className="text-3xl mb-2">{icon}</span>
+              {label}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Every Audit Includes */}
+      <section className="max-w-7xl mx-auto px-6 mt-24 text-center">
+        <h3 className="mb-8 font-semibold">Every Audit Includes</h3>
+        <ul className="inline-block text-left space-y-2 text-sm max-w-md mx-auto border border-yellow-600 rounded p-6">
+          {[
+            "SEO + AI Score (150+ points)",
+            "ChatGPT & LLM Optimization Breakdown",
+            "Custom Action Plan",
+            "Shareable Downloadable Report Link",
+            "Built-in Upgrade Option",
+            "Delivered in Minutes",
+          ].map((item) => (
+            <li key={item} className="flex items-center gap-3">
+              <FaCheckCircle className="text-yellow-500" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Scale With White Label Access */}
+      <section className="max-w-7xl mx-auto px-6 mt-24 text-center">
+        <h3 className="mb-8 font-semibold">Scale With White Label Access</h3>
+        <p className="mb-8 text-sm max-w-md mx-auto">
+          Launch your own branded AI SEO audit platform instantly.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+          {/* White Label Basic */}
+          <div className="bg-[#222f44] p-6 rounded-lg text-left">
+            <h4 className="font-bold mb-4">WHITE LABEL BASIC</h4>
+            <p className="text-2xl font-extrabold mb-6">$349</p>
+            <ul className="space-y-2 text-sm">
+              <li className="flex items-center gap-2">
+                <FaCheckCircle className="text-green-500" />
+                Use your logo, platform name, and branding
+              </li>
+              <li className="flex items-center gap-2">
+                <FaCheckCircle className="text-green-500" />
+                Unlimited audit reports
+              </li>
+              <li className="flex items-center gap-2">
+                <FaCheckCircle className="text-green-500" />
+                Shareable live report links
+              </li>
+              <li className="flex items-center gap-2 text-red-500">
+                No custom domain (you.8milesniper.com only)
+              </li>
+              <li className="flex items-center gap-2 text-red-500">
+                No UI theme or color control
+              </li>
+              <li className="flex items-center gap-2 text-red-500">
+                Resale not permitted
+              </li>
+              <li className="flex items-center gap-2 text-red-500">
+                Email-only support
+              </li>
             </ul>
-            <button className="mt-6 w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded">
-              {tier.title === "Commercial License" ? "Apply Now" : "Get Started"}
+            <button className="mt-6 bg-yellow-600 hover:bg-yellow-700 text-black w-full py-2 rounded font-semibold transition">
+              Get White Label Basic
             </button>
           </div>
-        ))}
-      </div>
+
+          {/* White Label Premium */}
+          <div className="bg-[#222f44] p-6 rounded-lg text-left">
+            <h4 className="font-bold mb-4">WHITE LABEL PREMIUM</h4>
+            <p className="text-2xl font-extrabold mb-6">$549</p>
+            <ul className="space-y-2 text-sm">
+              <li className="flex items-center gap-2">
+                <FaCheckCircle className="text-green-500" />
+                All Basic features
+              </li>
+              <li className="flex items-center gap-2">
+                <FaCheckCircle className="text-green-500" />
+                Unlimited audit reports
+              </li>
+              <li className="flex items-center gap-2">
+                <FaCheckCircle className="text-green-500" />
+                Custom domain (yourdomain.com)
+              </li>
+              <li className="flex items-center gap-2">
+                <FaCheckCircle className="text-green-500" />
+                Full UI theme & styling control
+              </li>
+              <li className="flex items-center gap-2">
+                <FaCheckCircle className="text-green-500" />
+                Priority support
+              </li>
+              <li className="flex items-center gap-2 text-red-500">
+                Resale not permitted
+              </li>
+            </ul>
+            <button className="mt-6 bg-yellow-600 hover:bg-yellow-700 text-black w-full py-2 rounded font-semibold transition">
+              Get White Label Premium
+            </button>
+          </div>
+
+          {/* Commercial License */}
+          <div className="bg-[#222f44] p-6 rounded-lg text-left">
+            <h4 className="font-bold mb-4">COMMERCIAL LICENSE</h4>
+            <p className="text-2xl font-extrabold mb-6">$950</p>
+            <ul className="space-y-2 text-sm">
+              <li className="flex items-center gap-2">
+                <FaCheckCircle className="text-green-500" />
+                Unlimited audit reports
+              </li>
+              <li className="flex items-center gap-2">
+                <FaCheckCircle className="text-green-500" />
+                API access
+              </li>
+              <li className="flex items-center gap-2">
+                <FaCheckCircle className="text-green-500" />
+                Revenue-ready license (you can resell)
+              </li>
+              <li className="flex items-center gap-2">
+                <FaCheckCircle className="text-green-500" />
+                Dedicated onboarding + training
+              </li>
+              <li className="flex items-center gap-2">
+                <FaCheckCircle className="text-green-500" />
+                White-label platform + custom domain
+              </li>
+              <li className="flex items-center gap-2">
+                <FaCheckCircle className="text-green-500" />
+                Full support
+              </li>
+            </ul>
+            <button className="mt-6 bg-yellow-600 hover:bg-yellow-700 text-black w-full py-2 rounded font-semibold transition">
+              Apply for Enterprise Access
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="mt-24 py-8 text-center text-xs text-gray-400 max-w-7xl mx-auto px-6">
+        <p>
+          support@8milesniper.com | +61 444 513 480
+        </p>
+        <p>© 2025 8 Mile Sniper. All rights reserved.</p>
+        <p>
+          <a href="#" className="underline hover:text-yellow-400">Terms</a> |{" "}
+          <a href="#" className="underline hover:text-yellow-400">Privacy</a> |{" "}
+          <a href="#" className="underline hover:text-yellow-400">Refund Policy</a>
+        </p>
+      </footer>
     </div>
   );
 };
 
-export default function LandingPage() {
-  return (
-    <main className="bg-gradient-to-b from-[#0a0f1c] to-[#391f12] text-white font-sans">
-      <header className="text-center py-20 px-4">
-        <img src="/eagle-logo.png" alt="8 Mile Sniper Logo" className="mx-auto mb-4 w-16" />
-        <h1 className="text-5xl md:text-6xl font-bold">
-          <span className="text-orange-500">Precision</span> SEO Targeting
-        </h1>
-        <p className="mt-4 text-lg md:text-xl text-gray-300">
-          Get a world-class SEO audit that outperforms the competition
-        </p>
-        <p className="text-orange-400 mt-2 font-medium">Free • Instant • Comprehensive</p>
-        <div className="mt-8 max-w-xl mx-auto flex flex-col md:flex-row items-center">
-          <input
-            type="text"
-            placeholder="Enter your website URL (e.g., example.com)"
-            className="flex-1 p-3 rounded-l-md w-full md:w-auto text-black"
-          />
-          <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-r-md font-bold mt-4 md:mt-0">
-            Start FREE Audit →
-          </button>
-        </div>
-        <p className="text-sm mt-3 text-gray-400">No signup required • Instant results • Professional insights</p>
-      </header>
-
-      <section className="bg-[#101726] py-16 text-center">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h3 className="text-orange-400 font-bold mb-2">Precision Analysis</h3>
-            <p className="text-sm text-gray-300">AI-powered SEO audits built for local domination</p>
-          </div>
-          <div>
-            <h3 className="text-orange-400 font-bold mb-2">Instant Results</h3>
-            <p className="text-sm text-gray-300">Get your SEO report in under 60 seconds</p>
-          </div>
-          <div>
-            <h3 className="text-orange-400 font-bold mb-2">Industry Leading</h3>
-            <p className="text-sm text-gray-300">75+ technical checks + 50+ AI readiness checks</p>
-          </div>
-          <div>
-            <h3 className="text-orange-400 font-bold mb-2">Actionable Reports</h3>
-            <p className="text-sm text-gray-300">Clear next steps, visuals, and score breakdowns</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#0c131f] py-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6">Why Choose Our SEO Audit Tool?</h2>
-          <p className="text-gray-300 mb-8">Superior analysis that goes beyond basic SEO checks.</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-            <div>
-              <h4 className="text-lg font-semibold text-orange-500 mb-2">Comprehensive Analysis Includes:</h4>
-              <ul className="list-disc list-inside text-gray-300 space-y-2">
-                <li>AI Readiness for search</li>
-                <li>LLM scoring & future-proofing</li>
-                <li>Indexing & crawl status</li>
-                <li>On-page & metadata optimisation</li>
-                <li>Technical SEO breakdowns</li>
-                <li>Competitor snapshot</li>
-                <li>Brand kit PDF report included</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold text-orange-500 mb-2">What You Won’t Get:</h4>
-              <ul className="list-disc list-inside text-gray-300 space-y-2">
-                <li>Cookie-cutter tools</li>
-                <li>Fluffy info</li>
-                <li>Tech-speak with no action steps</li>
-                <li>Hidden upsells</li>
-                <li>Time-wasting email gates</li>
-              </ul>
-              <div className="mt-6 p-4 bg-[#1a2330] rounded text-center">
-                <p className="text-sm text-gray-400">Single Report</p>
-                <p className="text-2xl font-bold text-white mt-2">$47</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <PricingTable />
-
-      <footer className="bg-[#0a0f1c] text-center text-gray-400 text-sm py-8">
-        <p>© 2025 8 Mile Sniper. All rights reserved. AI-Driven Local Growth Solutions</p>
-        <p className="text-orange-500 mt-2 animate-pulse">Audited over 1,500 sites · Results ready in minutes</p>
-      </footer>
-    </main>
-  );
-}
+export default LandingPage;
