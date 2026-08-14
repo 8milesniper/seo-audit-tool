@@ -2,26 +2,26 @@ import jsPDF from 'jspdf'
 
 interface SEOMetrics {
   overallScore: number
-  performanceScore: number
+  // Real Google PageSpeed Insights data - null ("Unavailable") when no API
+  // key is configured server-side, never a fabricated number.
+  performanceScore: number | null
   seoScore: number
-  accessibilityScore: number
-  bestPracticesScore: number
-  
-  // NEW 2025 FEATURES
+  accessibilityScore: number | null
+  bestPracticesScore: number | null
+
   aiSearchReadiness: number
   voiceSearchOptimization: number
   schemaEntityScore: number
   eeAtScore: number
-  
+
   coreWebVitals: {
-    lcp: number
-    fid: number
-    cls: number
-    inp: number
-    tbt: number
-    ttfb: number
+    lcp: number | null
+    cls: number | null
+    inp: number | null
+    tbt: number | null
+    ttfb: number | null
   }
-  
+
   aiSearch: {
     sgeOptimization: number
     chatgptReadiness: number
@@ -31,16 +31,16 @@ interface SEOMetrics {
     firstHandExperience: boolean
     multimediaRichness: number
   }
-  
+
   voiceSearch: {
     conversationalKeywords: number
     featuredSnippetOpportunities: number
     localVoiceReadiness: number
     questionBasedContent: number
-    averageReadingLevel: number
+    averageReadingLevel: number | null
     naturalLanguageOptimization: boolean
   }
-  
+
   schemaEntity: {
     organizationSchema: boolean
     personSchema: boolean
@@ -53,7 +53,7 @@ interface SEOMetrics {
     semanticMarkup: number
     knowledgeGraphPresence: boolean
   }
-  
+
   eeAt: {
     experienceSignals: number
     expertiseIndicators: number
@@ -64,18 +64,18 @@ interface SEOMetrics {
     contentDepth: number
     sourceCredibility: number
   }
-  
+
   technical: {
     https: boolean
     mobile: boolean
-    pageSpeed: number
+    pageSpeed: number | null
     imageOptimization: number
-    mobileCoreWebVitals: number
+    mobileCoreWebVitals: number | null
     pwaCompatibility: boolean
     structuredDataValidation: number
     internationalSeo: number
   }
-  
+
   onPage: {
     titleTag: boolean
     metaDescription: boolean
@@ -84,16 +84,13 @@ interface SEOMetrics {
     semanticKeywords: number
     contentComprehensiveness: number
     userIntentAlignment: number
-    readabilityScore: number
+    readabilityScore: number | null
   }
-  
-  backlinks: {
-    totalBacklinks: number
-    referringDomains: number
-    domainAuthority: number
-    pageAuthority: number
-  }
-  
+
+  // NOTE: backlinks/domain authority/referring domains/page authority were
+  // removed entirely - there is no free, real data source for them, and the
+  // old values were Math.random() fabrications.
+
   issues: Array<{
     type: 'critical' | 'warning' | 'info'
     category: 'traditional' | 'ai-search' | 'voice-search' | 'schema' | 'eeat' | 'performance'
@@ -266,13 +263,20 @@ export const generateProfessionalPDF = async (
     pdf.setFontSize(9)
     pdf.setFont('helvetica', 'normal')
     pdf.text(metric.name, leftMargin + 2, currentY + 5)
-    
-    // Score with color
-    const scoreColor = metric.score >= 80 ? [16, 185, 129] : 
-                      metric.score >= 60 ? [245, 158, 11] : [239, 68, 68]
-    pdf.setTextColor(scoreColor[0], scoreColor[1], scoreColor[2])
-    pdf.setFont('helvetica', 'bold')
-    pdf.text(`${metric.score}/100`, rightMargin - 25, currentY + 5)
+
+    // Score with color - genuinely unavailable data (no PageSpeed API key)
+    // renders as "Unavailable" in neutral gray, never a fabricated number.
+    if (metric.score === null) {
+      pdf.setTextColor(120, 120, 120)
+      pdf.setFont('helvetica', 'italic')
+      pdf.text('Unavailable', rightMargin - 30, currentY + 5)
+    } else {
+      const scoreColor = metric.score >= 80 ? [16, 185, 129] :
+                        metric.score >= 60 ? [245, 158, 11] : [239, 68, 68]
+      pdf.setTextColor(scoreColor[0], scoreColor[1], scoreColor[2])
+      pdf.setFont('helvetica', 'bold')
+      pdf.text(`${metric.score}/100`, rightMargin - 25, currentY + 5)
+    }
     
     currentY += 8
   })

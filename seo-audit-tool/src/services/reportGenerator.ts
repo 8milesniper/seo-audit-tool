@@ -47,7 +47,8 @@ export const generatePDFReport = async (url: string, metrics: SEOMetrics, userDa
     }
   }
 
-  const getScoreColor = (score: number) => {
+  const getScoreColor = (score: number | null) => {
+    if (score === null) return '#9ca3af' // Grey - unavailable, not fabricated
     if (score >= 90) return '#10b981' // Green
     if (score >= 70) return '#f59e0b' // Amber
     if (score >= 50) return '#f97316' // Orange
@@ -122,13 +123,13 @@ export const generatePDFReport = async (url: string, metrics: SEOMetrics, userDa
   scores.forEach(score => {
     addText(score.label, margin, currentY, 12, darkColor)
     const scoreColor = getScoreColor(score.value)
-    addText(score.value.toString(), margin + 120, currentY, 12, scoreColor)
-    
+    addText(score.value === null ? 'Unavailable' : score.value.toString(), margin + 120, currentY, 12, scoreColor)
+
     // Progress bar
     const barWidth = 50
     const barHeight = 3
     addRect(margin + 135, currentY - 2, barWidth, barHeight, '#e5e7eb')
-    addRect(margin + 135, currentY - 2, (barWidth * score.value) / 100, barHeight, scoreColor)
+    addRect(margin + 135, currentY - 2, (barWidth * (score.value ?? 0)) / 100, barHeight, scoreColor)
     
     currentY += 12
   })
@@ -146,7 +147,7 @@ export const generatePDFReport = async (url: string, metrics: SEOMetrics, userDa
   currentY += 8
   addText(`• ${warningIssues} warnings that should be addressed`, margin, currentY, 11, darkColor)
   currentY += 8
-  addText(`• Core Web Vitals: LCP ${metrics.coreWebVitals.lcp}s, FID ${metrics.coreWebVitals.fid}ms, CLS ${metrics.coreWebVitals.cls}`, margin, currentY, 11, darkColor)
+  addText(`• Core Web Vitals: LCP ${metrics.coreWebVitals.lcp ?? 'Unavailable'}${metrics.coreWebVitals.lcp !== null ? 's' : ''}, CLS ${metrics.coreWebVitals.cls ?? 'Unavailable'}`, margin, currentY, 11, darkColor)
   currentY += 8
   addText(`• Mobile-friendly: ${metrics.technical.mobile ? 'Yes' : 'No'}`, margin, currentY, 11, darkColor)
   currentY += 8
@@ -167,9 +168,9 @@ export const generatePDFReport = async (url: string, metrics: SEOMetrics, userDa
   currentY += 10
 
   const webVitals = [
-    { metric: 'Largest Contentful Paint (LCP)', value: `${metrics.coreWebVitals.lcp}s`, threshold: '< 2.5s', status: metrics.coreWebVitals.lcp <= 2.5 },
-    { metric: 'First Input Delay (FID)', value: `${metrics.coreWebVitals.fid}ms`, threshold: '< 100ms', status: metrics.coreWebVitals.fid <= 100 },
-    { metric: 'Cumulative Layout Shift (CLS)', value: metrics.coreWebVitals.cls.toString(), threshold: '< 0.1', status: metrics.coreWebVitals.cls <= 0.1 }
+    { metric: 'Largest Contentful Paint (LCP)', value: metrics.coreWebVitals.lcp !== null ? `${metrics.coreWebVitals.lcp}s` : 'Unavailable', threshold: '< 2.5s', status: metrics.coreWebVitals.lcp !== null && metrics.coreWebVitals.lcp <= 2.5 },
+    { metric: 'Total Blocking Time (TBT)', value: metrics.coreWebVitals.tbt !== null ? `${metrics.coreWebVitals.tbt}ms` : 'Unavailable', threshold: '< 200ms', status: metrics.coreWebVitals.tbt !== null && metrics.coreWebVitals.tbt <= 200 },
+    { metric: 'Cumulative Layout Shift (CLS)', value: metrics.coreWebVitals.cls !== null ? metrics.coreWebVitals.cls.toString() : 'Unavailable', threshold: '< 0.1', status: metrics.coreWebVitals.cls !== null && metrics.coreWebVitals.cls <= 0.1 }
   ]
 
   webVitals.forEach(vital => {
@@ -192,7 +193,7 @@ export const generatePDFReport = async (url: string, metrics: SEOMetrics, userDa
   const technicalChecks = [
     { check: 'HTTPS Protocol', status: metrics.technical.https },
     { check: 'Mobile Responsive', status: metrics.technical.mobile },
-    { check: 'Page Speed Optimized', status: metrics.technical.pageSpeed < 3 },
+    { check: 'Page Speed Optimized', status: metrics.technical.pageSpeed !== null && metrics.technical.pageSpeed < 3 },
     { check: 'Image Optimization', status: metrics.technical.imageOptimization > 70 }
   ]
 
@@ -297,7 +298,7 @@ export const generateHTMLReport = (url: string, metrics: SEOMetrics, userData: U
 
       <div class="metrics">
         <div class="metric-card">
-          <div class="score">${metrics.performanceScore}</div>
+          <div class="score">${metrics.performanceScore ?? 'Unavailable'}</div>
           <div>Performance</div>
         </div>
         <div class="metric-card">
@@ -305,11 +306,11 @@ export const generateHTMLReport = (url: string, metrics: SEOMetrics, userData: U
           <div>SEO Optimization</div>
         </div>
         <div class="metric-card">
-          <div class="score">${metrics.accessibilityScore}</div>
+          <div class="score">${metrics.accessibilityScore ?? 'Unavailable'}</div>
           <div>Accessibility</div>
         </div>
         <div class="metric-card">
-          <div class="score">${metrics.bestPracticesScore}</div>
+          <div class="score">${metrics.bestPracticesScore ?? 'Unavailable'}</div>
           <div>Best Practices</div>
         </div>
       </div>
@@ -318,7 +319,7 @@ export const generateHTMLReport = (url: string, metrics: SEOMetrics, userData: U
       <ul>
         <li>${criticalIssues} critical issues requiring immediate attention</li>
         <li>${warningIssues} warnings that should be addressed</li>
-        <li>Core Web Vitals: LCP ${metrics.coreWebVitals.lcp}s, FID ${metrics.coreWebVitals.fid}ms, CLS ${metrics.coreWebVitals.cls}</li>
+        <li>Core Web Vitals: LCP ${metrics.coreWebVitals.lcp ?? 'Unavailable'}${metrics.coreWebVitals.lcp !== null ? 's' : ''}, CLS ${metrics.coreWebVitals.cls ?? 'Unavailable'}</li>
         <li>Mobile-friendly: ${metrics.technical.mobile ? 'Yes' : 'No'}</li>
         <li>HTTPS enabled: ${metrics.technical.https ? 'Yes' : 'No'}</li>
       </ul>

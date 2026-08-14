@@ -1,5 +1,7 @@
-// E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) Analysis Service
-// Analyzes content authority and trust signals for AI search optimization
+// E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) Analysis
+// Scores real trust/authority signals found in the actually-fetched page and
+// its structured data - no Math.random(), no URL string matching.
+import { PageSignals, countPhraseHits } from './htmlSignals'
 
 export interface EEATMetrics {
   experienceSignals: number
@@ -10,24 +12,81 @@ export interface EEATMetrics {
   socialProof: number
   contentDepth: number
   sourceCredibility: number
+  methodology: string
 }
 
-export const analyzeEEAT = async (url: string, content?: string): Promise<EEATMetrics> => {
-  // Simulate analysis delay
-  await new Promise(resolve => setTimeout(resolve, 1000))
+const EXPERIENCE_PHRASES = [
+  'we tested', 'we tried', 'we found', 'our team', 'i tested', 'i tried',
+  'i found', 'i discovered', 'in my experience', 'personally', 'hands-on',
+  'hands on', 'real world', 'case study', 'first-hand', 'firsthand',
+]
 
-  const domain = new URL(url).hostname
-  const urlPath = new URL(url).pathname.toLowerCase()
-  
-  // Analyze E-E-A-T components
-  const experienceSignals = analyzeExperienceSignals(url, content)
-  const expertiseIndicators = analyzeExpertiseIndicators(url, domain, content)
-  const authoritativenessScore = analyzeAuthoritativeness(url, domain)
-  const trustworthinessSignals = analyzeTrustworthiness(url, domain, content)
-  const authorshipMarkup = analyzeAuthorshipMarkup(url, content)
-  const socialProof = analyzeSocialProof(url, domain)
-  const contentDepth = analyzeContentDepth(content)
-  const sourceCredibility = analyzeSourceCredibility(url, domain, content)
+const EXPERTISE_PHRASES = [
+  'certified', 'licensed', 'phd', 'years of experience', 'expert', 'specialist',
+  'accredited', 'qualified', 'board-certified', 'years in the industry',
+]
+
+const SOCIAL_PROOF_PHRASES = [
+  'testimonial', 'review', 'rated', 'customers say', 'trusted by', 'as seen in',
+  '5 stars', 'client feedback',
+]
+
+const CREDIBLE_TLDS = ['.gov', '.edu']
+
+const clamp = (n: number) => Math.max(0, Math.min(100, Math.round(n)))
+
+export function analyzeEEAT(signals: PageSignals): EEATMetrics {
+  const experienceHits = countPhraseHits(signals.bodyText, EXPERIENCE_PHRASES)
+  const expertiseHits = countPhraseHits(signals.bodyText, EXPERTISE_PHRASES)
+  const socialProofHits = countPhraseHits(signals.bodyText, SOCIAL_PROOF_PHRASES)
+  const hasPersonSchema = signals.jsonLd.some((e) => e.type === 'Person')
+  const hasReviewSchema = signals.jsonLd.some((e) => e.type === 'Review' || e.type === 'AggregateRating')
+  const hasArticleAuthorField = signals.jsonLd.some((e) => e.type === 'Article' && Boolean(e.raw['author']))
+  const credibleExternalLinks = signals.links.externalHrefs.filter((href) => CREDIBLE_TLDS.some((tld) => href.includes(tld))).length
+  const distinctExternalDomains = new Set(
+    signals.links.externalHrefs.map((href) => {
+      try {
+        return new URL(href).hostname
+      } catch {
+        return href
+      }
+    })
+  ).size
+
+  // Experience Signals: real count of first-hand-experience phrasing in the
+  // actual page text.
+  const experienceSignals = clamp(15 + experienceHits * 18)
+
+  // Expertise Indicators: real credential/expertise phrasing plus a real
+  // Person schema entity (a structured expertise claim, not just prose).
+  const expertiseIndicators = clamp(15 + expertiseHits * 15 + (hasPersonSchema ? 20 : 0))
+
+  // Authoritativeness: real presence of an About page link, real Person
+  // schema, and real outbound citations to distinct domains.
+  const authoritativenessScore = clamp(
+    (signals.pageLinks.hasAboutPage ? 30 : 0) + (hasPersonSchema ? 25 : 0) + Math.min(45, distinctExternalDomains * 9)
+  )
+
+  // Trustworthiness: real HTTPS, real Contact page link, real Privacy/Terms
+  // page link - all directly checkable from the fetched page.
+  const trustworthinessSignals = clamp(
+    (signals.https ? 34 : 0) + (signals.pageLinks.hasContactPage ? 33 : 0) + (signals.pageLinks.hasPrivacyOrTermsPage ? 33 : 0)
+  )
+
+  const authorshipMarkup = signals.hasAuthorMeta || hasPersonSchema || hasArticleAuthorField
+
+  // Social Proof: real testimonial/review language, or real Review/
+  // AggregateRating structured data.
+  const socialProof = clamp((hasReviewSchema ? 50 : 0) + socialProofHits * 15)
+
+  // Content Depth: real word count from the actual extracted page text,
+  // scaled so ~1500 words (a commonly-cited comprehensive-content threshold)
+  // reaches 100.
+  const contentDepth = clamp((signals.wordCount / 1500) * 100)
+
+  // Source Credibility: real count of distinct outbound domains, with a
+  // bonus for citing .gov/.edu sources.
+  const sourceCredibility = clamp(Math.min(70, distinctExternalDomains * 14) + Math.min(30, credibleExternalLinks * 15))
 
   return {
     experienceSignals,
@@ -37,337 +96,30 @@ export const analyzeEEAT = async (url: string, content?: string): Promise<EEATMe
     authorshipMarkup,
     socialProof,
     contentDepth,
-    sourceCredibility
+    sourceCredibility,
+    methodology:
+      `Scored from real signals in the fetched page: ${experienceHits} first-hand-experience phrase match(es), ` +
+      `${expertiseHits} expertise/credential phrase match(es), ${signals.pageLinks.hasAboutPage ? 'an About page link' : 'no About page link'}, ` +
+      `${signals.pageLinks.hasContactPage ? 'a Contact page link' : 'no Contact page link'}, ` +
+      `${signals.pageLinks.hasPrivacyOrTermsPage ? 'a Privacy/Terms page link' : 'no Privacy/Terms page link'}, ` +
+      `author byline/schema ${authorshipMarkup ? 'found' : 'not found'}, ${signals.wordCount} real words of body content, ` +
+      `and links to ${distinctExternalDomains} distinct external domain(s) (${credibleExternalLinks} to .gov/.edu).`,
   }
 }
 
-const analyzeExperienceSignals = (url: string, content?: string): number => {
-  let score = 25 // Base score
-  
-  // First-hand experience indicators in URL
-  const experienceUrls = ['/review', '/experience', '/case-study', '/tested', '/used', '/tried']
-  if (experienceUrls.some(exp => url.includes(exp))) {
-    score += 20
-  }
-  
-  if (content) {
-    const contentLower = content.toLowerCase()
-    
-    // First-person experience indicators
-    const firstPersonIndicators = [
-      'i tested', 'i used', 'i tried', 'i found', 'i discovered',
-      'we tested', 'we used', 'we found', 'our experience',
-      'in my experience', 'personally', 'real world', 'hands on'
-    ]
-    
-    const foundFirstPerson = firstPersonIndicators.filter(indicator => 
-      contentLower.includes(indicator)
-    )
-    score += foundFirstPerson.length * 8
-    
-    // Case study indicators
-    const caseStudyIndicators = ['case study', 'real example', 'actual results', 'before and after']
-    const foundCaseStudy = caseStudyIndicators.filter(indicator => 
-      contentLower.includes(indicator)
-    )
-    score += foundCaseStudy.length * 10
-    
-    // Time-based experience indicators
-    const timeIndicators = ['years of', 'months of', 'experience with', 'working with']
-    const foundTime = timeIndicators.filter(indicator => 
-      contentLower.includes(indicator)
-    )
-    score += foundTime.length * 5
-  }
-  
-  return Math.min(Math.max(score, 10), 100)
-}
-
-const analyzeExpertiseIndicators = (url: string, domain: string, content?: string): number => {
-  let score = 30 // Base score
-  
-  // Domain authority indicators
-  const expertDomains = ['expert', 'professional', 'specialist', 'certified', 'academy', 'institute']
-  if (expertDomains.some(expert => domain.includes(expert))) {
-    score += 20
-  }
-  
-  // Educational domains
-  if (domain.includes('edu') || domain.includes('university') || domain.includes('college')) {
-    score += 25
-  }
-  
-  // Professional domains
-  if (domain.includes('md') || domain.includes('phd') || domain.includes('cpa')) {
-    score += 15
-  }
-  
-  if (content) {
-    const contentLower = content.toLowerCase()
-    
-    // Expertise indicators in content
-    const expertiseIndicators = [
-      'certified', 'licensed', 'degree in', 'phd', 'masters', 'bachelor',
-      'board certified', 'specialist in', 'expert in', 'years of experience',
-      'trained in', 'qualified', 'accredited', 'fellowship'
-    ]
-    
-    const foundExpertise = expertiseIndicators.filter(indicator => 
-      contentLower.includes(indicator)
-    )
-    score += foundExpertise.length * 6
-    
-    // Technical depth indicators
-    const technicalIndicators = [
-      'methodology', 'analysis', 'research', 'study', 'data',
-      'algorithm', 'framework', 'best practices', 'industry standard'
-    ]
-    
-    const foundTechnical = technicalIndicators.filter(indicator => 
-      contentLower.includes(indicator)
-    )
-    score += foundTechnical.length * 3
-  }
-  
-  return Math.min(Math.max(score, 15), 100)
-}
-
-const analyzeAuthoritativeness = (url: string, domain: string): number => {
-  let score = 35 // Base score
-  
-  // Government and educational domains
-  if (domain.includes('gov') || domain.includes('edu')) {
-    score += 30
-  }
-  
-  // Established organizations
-  if (domain.includes('org') || domain.includes('institute') || domain.includes('foundation')) {
-    score += 20
-  }
-  
-  // Professional services
-  if (domain.includes('corp') || domain.includes('inc') || domain.includes('llc')) {
-    score += 15
-  }
-  
-  // About/team pages indicate transparency
-  if (url.includes('/about') || url.includes('/team') || url.includes('/leadership')) {
-    score += 12
-  }
-  
-  // Awards and recognition pages
-  if (url.includes('/awards') || url.includes('/recognition') || url.includes('/accolades')) {
-    score += 10
-  }
-  
-  // Domain age simulation (shorter domains often more established)
-  if (domain.length < 12 && !domain.includes('-')) {
-    score += 8
-  }
-  
-  return Math.min(Math.max(score, 20), 100)
-}
-
-const analyzeTrustworthiness = (url: string, domain: string, content?: string): number => {
-  let score = 40 // Base score
-  
-  // HTTPS is essential for trust
-  if (url.startsWith('https://')) {
-    score += 15
-  } else {
-    score -= 20 // Penalty for HTTP
-  }
-  
-  // Trust indicators in URL structure
-  const trustUrls = ['/privacy', '/terms', '/security', '/contact', '/legal']
-  const foundTrustUrls = trustUrls.filter(trustUrl => 
-    url.includes(trustUrl) || domain.includes(trustUrl.substring(1))
-  )
-  score += foundTrustUrls.length * 8
-  
-  // Medical, legal, financial domains need extra trust signals
-  const ymlDomains = ['medical', 'health', 'legal', 'finance', 'bank', 'insurance']
-  const isYMYL = ymlDomains.some(ymyl => domain.includes(ymyl))
-  if (isYMYL) {
-    score += 10 // Bonus for having trust signals in YMYL
-  }
-  
-  if (content) {
-    const contentLower = content.toLowerCase()
-    
-    // Trust signals in content
-    const trustSignals = [
-      'privacy policy', 'terms of service', 'secure', 'certified',
-      'verified', 'guarantee', 'contact us', 'customer service',
-      'refund policy', 'satisfaction guarantee'
-    ]
-    
-    const foundTrustSignals = trustSignals.filter(signal => 
-      contentLower.includes(signal)
-    )
-    score += foundTrustSignals.length * 5
-    
-    // Transparency indicators
-    const transparencyIndicators = [
-      'disclosure', 'affiliate', 'sponsored', 'advertisement',
-      'terms and conditions', 'disclaimer'
-    ]
-    
-    const foundTransparency = transparencyIndicators.filter(indicator => 
-      contentLower.includes(indicator)
-    )
-    score += foundTransparency.length * 3
-  }
-  
-  return Math.min(Math.max(score, 15), 100)
-}
-
-const analyzeAuthorshipMarkup = (url: string, content?: string): boolean => {
-  // Author page indicators
-  const isAuthorPage = url.includes('/author') || url.includes('/by/') || url.includes('/writer')
-  
-  let probability = 0.2 // Base probability
-  if (isAuthorPage) probability += 0.6
-  
-  if (content) {
-    const contentLower = content.toLowerCase()
-    
-    // Authorship indicators
-    const authorshipIndicators = [
-      'written by', 'author:', 'by ', 'about the author',
-      'bio', 'profile', 'contact author'
-    ]
-    
-    const hasAuthorshipIndicators = authorshipIndicators.some(indicator => 
-      contentLower.includes(indicator)
-    )
-    
-    if (hasAuthorshipIndicators) probability += 0.4
-  }
-  
-  // Blog posts and articles more likely to have authorship
-  if (url.includes('/blog') || url.includes('/article') || url.includes('/news')) {
-    probability += 0.3
-  }
-  
-  return Math.random() < probability
-}
-
-const analyzeSocialProof = (url: string, domain: string): number => {
-  let score = 30 // Base score
-  
-  // Social media presence indicators
-  const socialIndicators = ['facebook', 'twitter', 'linkedin', 'instagram', 'youtube']
-  const hasSocialIndicators = socialIndicators.some(social => 
-    url.includes(social) || domain.includes(social)
-  )
-  
-  if (hasSocialIndicators) score += 20
-  
-  // Reviews and testimonials
-  if (url.includes('/reviews') || url.includes('/testimonials') || url.includes('/feedback')) {
-    score += 15
-  }
-  
-  // Awards and certifications
-  if (url.includes('/awards') || url.includes('/certifications') || url.includes('/recognition')) {
-    score += 12
-  }
-  
-  // Press and media mentions
-  if (url.includes('/press') || url.includes('/media') || url.includes('/news')) {
-    score += 10
-  }
-  
-  // Customer stories
-  if (url.includes('/customers') || url.includes('/case-studies') || url.includes('/success')) {
-    score += 8
-  }
-  
-  return Math.min(Math.max(score, 10), 100)
-}
-
-const analyzeContentDepth = (content?: string): number => {
-  if (!content) return Math.floor(Math.random() * 40) + 30 // Random 30-70
-  
-  let score = 20 // Base score
-  
-  // Content length analysis
-  const wordCount = content.split(/\s+/).filter(word => word.length > 0).length
-  
-  if (wordCount > 2000) score += 30
-  else if (wordCount > 1000) score += 20
-  else if (wordCount > 500) score += 10
-  
-  // Structure indicators
-  const structureIndicators = content.match(/#{1,6}\s/g) || [] // Headers
-  score += Math.min(structureIndicators.length * 2, 15)
-  
-  // Lists and organization
-  const listItems = (content.match(/^\s*[-*+]\s/gm) || []).length
-  score += Math.min(listItems, 10)
-  
-  // Citations and references
-  const citations = (content.match(/\[.*?\]|\(.*?\)/g) || []).length
-  score += Math.min(citations, 15)
-  
-  return Math.min(Math.max(score, 10), 100)
-}
-
-const analyzeSourceCredibility = (url: string, domain: string, content?: string): number => {
-  let score = 35 // Base score
-  
-  // High-authority domains
-  const authorityDomains = ['gov', 'edu', 'org', 'wikipedia', 'reuters', 'bbc', 'cnn']
-  if (authorityDomains.some(auth => domain.includes(auth))) {
-    score += 25
-  }
-  
-  // Professional domains
-  const professionalDomains = ['corp', 'inc', 'institute', 'academy', 'association']
-  if (professionalDomains.some(prof => domain.includes(prof))) {
-    score += 15
-  }
-  
-  if (content) {
-    const contentLower = content.toLowerCase()
-    
-    // Citation indicators
-    const citationIndicators = [
-      'source:', 'according to', 'study by', 'research from',
-      'published in', 'journal', 'peer reviewed'
-    ]
-    
-    const foundCitations = citationIndicators.filter(citation => 
-      contentLower.includes(citation)
-    )
-    score += foundCitations.length * 5
-    
-    // External links to authoritative sources
-    const linkCount = (content.match(/https?:\/\//g) || []).length
-    score += Math.min(linkCount * 2, 20)
-  }
-  
-  // Recent publication date simulation
-  if (Math.random() > 0.3) score += 10 // 70% chance of recent content
-  
-  return Math.min(Math.max(score, 15), 100)
-}
-
-// Calculate overall E-E-A-T Score
-export const calculateEEATScore = (metrics: EEATMetrics): number => {
+export function calculateEEATScore(metrics: EEATMetrics): number {
   const weights = {
-    experienceSignals: 0.25,        // 25% - First-hand experience
-    expertiseIndicators: 0.2,       // 20% - Domain expertise
-    authoritativenessScore: 0.2,    // 20% - Authority and recognition
-    trustworthinessSignals: 0.15,   // 15% - Trust and transparency
-    authorshipMarkup: 0.05,         // 5% - Clear authorship
-    socialProof: 0.05,              // 5% - Social validation
-    contentDepth: 0.05,             // 5% - Content comprehensiveness
-    sourceCredibility: 0.05         // 5% - Source quality
+    experienceSignals: 0.2,
+    expertiseIndicators: 0.2,
+    authoritativenessScore: 0.2,
+    trustworthinessSignals: 0.2,
+    authorshipMarkup: 0.05,
+    socialProof: 0.05,
+    contentDepth: 0.05,
+    sourceCredibility: 0.05,
   }
-  
-  let score = 
+
+  const score =
     metrics.experienceSignals * weights.experienceSignals +
     metrics.expertiseIndicators * weights.expertiseIndicators +
     metrics.authoritativenessScore * weights.authoritativenessScore +
@@ -376,12 +128,11 @@ export const calculateEEATScore = (metrics: EEATMetrics): number => {
     metrics.socialProof * weights.socialProof +
     metrics.contentDepth * weights.contentDepth +
     metrics.sourceCredibility * weights.sourceCredibility
-  
-  return Math.round(Math.min(Math.max(score, 10), 100))
+
+  return Math.round(Math.max(0, Math.min(100, score)))
 }
 
-// Generate E-E-A-T optimization recommendations
-export const generateEEATRecommendations = (metrics: EEATMetrics): Array<{
+export function generateEEATRecommendations(metrics: EEATMetrics): Array<{
   type: 'critical' | 'warning' | 'info'
   category: 'eeat'
   title: string
@@ -389,97 +140,42 @@ export const generateEEATRecommendations = (metrics: EEATMetrics): Array<{
   recommendation: string
   priority: number
   impact: 'high' | 'medium' | 'low'
-}> => {
+}> {
   const recommendations = []
 
-  // Experience Signals
-  if (metrics.experienceSignals < 50) {
-    recommendations.push({
-      type: 'critical' as const,
-      category: 'eeat' as const,
-      title: 'Demonstrate First-Hand Experience',
-      description: 'Content lacks indicators of real-world experience and practical knowledge.',
-      recommendation: 'Add case studies, personal experiences, test results, and real-world examples. Use first-person language and show actual usage or implementation.',
-      priority: 1,
-      impact: 'high' as const
-    })
-  }
-
-  // Expertise Indicators
-  if (metrics.expertiseIndicators < 60) {
-    recommendations.push({
-      type: 'critical' as const,
-      category: 'eeat' as const,
-      title: 'Strengthen Expertise Indicators',
-      description: 'Website lacks clear indicators of subject matter expertise and qualifications.',
-      recommendation: 'Add author credentials, certifications, education background, and professional experience. Include technical depth and industry-specific knowledge.',
-      priority: 2,
-      impact: 'high' as const
-    })
-  }
-
-  // Authoritativeness
-  if (metrics.authoritativenessScore < 65) {
-    recommendations.push({
-      type: 'warning' as const,
-      category: 'eeat' as const,
-      title: 'Build Authority and Recognition',
-      description: 'Website needs stronger authority signals and industry recognition.',
-      recommendation: 'Create comprehensive About pages, showcase awards and recognition, build industry partnerships, and establish thought leadership.',
-      priority: 3,
-      impact: 'medium' as const
-    })
-  }
-
-  // Trustworthiness
-  if (metrics.trustworthinessSignals < 70) {
-    recommendations.push({
-      type: 'warning' as const,
-      category: 'eeat' as const,
-      title: 'Improve Trust Signals',
-      description: 'Website lacks sufficient trust and transparency indicators.',
-      recommendation: 'Add privacy policy, terms of service, contact information, security badges, and clear disclosure policies.',
-      priority: 4,
-      impact: 'medium' as const
-    })
-  }
-
-  // Authorship Markup
   if (!metrics.authorshipMarkup) {
     recommendations.push({
-      type: 'info' as const,
+      type: 'warning' as const,
       category: 'eeat' as const,
-      title: 'Implement Author Markup',
-      description: 'Content lacks clear authorship attribution and structured data.',
-      recommendation: 'Add author schema markup, bylines, and author bio sections. Link to author profiles and social media accounts.',
+      title: 'No Author Byline or Schema Found',
+      description: 'No author meta tag, byline element, or Person/Article-author schema was found on the page.',
+      recommendation: 'Add a visible author byline with credentials, backed by Person schema.',
+      priority: 4,
+      impact: 'medium' as const,
+    })
+  }
+
+  if (metrics.trustworthinessSignals < 60) {
+    recommendations.push({
+      type: 'warning' as const,
+      category: 'eeat' as const,
+      title: 'Trust Signals Incomplete',
+      description: 'One or more of HTTPS, a Contact page link, or a Privacy/Terms page link could not be found.',
+      recommendation: 'Ensure the site serves over HTTPS and has clearly linked Contact and Privacy/Terms pages.',
       priority: 5,
-      impact: 'low' as const
+      impact: 'medium' as const,
     })
   }
 
-  // Social Proof
-  if (metrics.socialProof < 40) {
+  if (metrics.contentDepth < 40) {
     recommendations.push({
       type: 'info' as const,
       category: 'eeat' as const,
-      title: 'Increase Social Proof',
-      description: 'Website could benefit from stronger social validation and community engagement.',
-      recommendation: 'Add customer testimonials, reviews, social media integration, press mentions, and user-generated content.',
-      priority: 6,
-      impact: 'low' as const
-    })
-  }
-
-  // Content Depth
-  if (metrics.contentDepth < 50) {
-    recommendations.push({
-      type: 'info' as const,
-      category: 'eeat' as const,
-      title: 'Enhance Content Depth',
-      description: 'Content lacks comprehensiveness and detailed coverage of topics.',
-      recommendation: 'Create longer, more detailed content with proper structure, citations, and comprehensive coverage of topics.',
+      title: 'Thin Content',
+      description: `The page has roughly ${Math.round((metrics.contentDepth / 100) * 1500)} words of real body text, below what's typically considered comprehensive.`,
+      recommendation: 'Expand the content to more thoroughly cover the topic.',
       priority: 7,
-      impact: 'medium' as const
+      impact: 'low' as const,
     })
   }
 

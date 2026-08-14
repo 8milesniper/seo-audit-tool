@@ -54,7 +54,10 @@ const MetricsBreakdown: React.FC<MetricsBreakdownProps> = ({ metrics, showDetail
     )
   }
 
-  const formatWebVital = (value: number, unit: string, threshold: number) => {
+  const formatWebVital = (value: number | null, unit: string, threshold: number) => {
+    if (value === null) {
+      return <span className="text-xs font-medium text-slate-500">Unavailable</span>
+    }
     const isGood = value <= threshold
     return (
       <div className="flex items-center space-x-2">
@@ -68,6 +71,16 @@ const MetricsBreakdown: React.FC<MetricsBreakdownProps> = ({ metrics, showDetail
         )}
       </div>
     )
+  }
+
+  // Renders a score + color, or an honest "Unavailable" instead of faking a
+  // number, for fields that come from PageSpeed Insights and are null when
+  // no GOOGLE_PAGESPEED_API_KEY is configured.
+  const renderScoreValue = (score: number | null) => {
+    if (score === null) {
+      return <span className="font-bold text-sm text-slate-500">Unavailable</span>
+    }
+    return <span className={`font-bold text-xl ${getScoreColor(score)}`}>{score}</span>
   }
 
   return (
@@ -333,15 +346,13 @@ const MetricsBreakdown: React.FC<MetricsBreakdownProps> = ({ metrics, showDetail
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-slate-300">Overall Score</span>
-                <span className={`font-bold text-xl ${getScoreColor(metrics.performanceScore)}`}>
-                  {metrics.performanceScore}
-                </span>
+                {renderScoreValue(metrics.performanceScore)}
               </div>
-              <Progress 
-                value={metrics.performanceScore} 
+              <Progress
+                value={metrics.performanceScore ?? 0}
                 className="h-2"
               />
-              
+
               {showDetailed && (
                 <div className="space-y-3 pt-2 border-t border-slate-700">
                   <h4 className="text-sm font-semibold text-amber-400">Enhanced Core Web Vitals</h4>
@@ -351,8 +362,8 @@ const MetricsBreakdown: React.FC<MetricsBreakdownProps> = ({ metrics, showDetail
                       {formatWebVital(metrics.coreWebVitals.lcp, 's', 2.5)}
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-slate-400">FID (Interactivity)</span>
-                      {formatWebVital(metrics.coreWebVitals.fid, 'ms', 100)}
+                      <span className="text-slate-400">TBT (Interactivity)</span>
+                      {formatWebVital(metrics.coreWebVitals.tbt, 'ms', 200)}
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-slate-400">CLS (Stability)</span>
@@ -433,15 +444,13 @@ const MetricsBreakdown: React.FC<MetricsBreakdownProps> = ({ metrics, showDetail
         <CardContent className="space-y-4">
           <div className="flex items-center justify-between">
             <span className="text-slate-300">Accessibility Score</span>
-            <span className={`font-bold text-xl ${getScoreColor(metrics.accessibilityScore)}`}>
-              {metrics.accessibilityScore}
-            </span>
+            {renderScoreValue(metrics.accessibilityScore)}
           </div>
-          <Progress 
-            value={metrics.accessibilityScore} 
+          <Progress
+            value={metrics.accessibilityScore ?? 0}
             className="h-2"
           />
-          
+
           {showDetailed && (
             <div className="space-y-3 pt-2 border-t border-slate-700">
               <h4 className="text-sm font-semibold text-blue-400">Technical Checks</h4>
@@ -457,7 +466,7 @@ const MetricsBreakdown: React.FC<MetricsBreakdownProps> = ({ metrics, showDetail
                 <div className="flex justify-between items-center">
                   <span className="text-slate-400">Page Speed</span>
                   <Badge variant="outline" className="text-xs">
-                    {metrics.technical.pageSpeed}s
+                    {metrics.technical.pageSpeed !== null ? `${metrics.technical.pageSpeed}s` : 'Unavailable'}
                   </Badge>
                 </div>
               </div>
@@ -477,12 +486,10 @@ const MetricsBreakdown: React.FC<MetricsBreakdownProps> = ({ metrics, showDetail
         <CardContent className="space-y-4">
           <div className="flex items-center justify-between">
             <span className="text-slate-300">Best Practices Score</span>
-            <span className={`font-bold text-xl ${getScoreColor(metrics.bestPracticesScore)}`}>
-              {metrics.bestPracticesScore}
-            </span>
+            {renderScoreValue(metrics.bestPracticesScore)}
           </div>
-          <Progress 
-            value={metrics.bestPracticesScore} 
+          <Progress
+            value={metrics.bestPracticesScore ?? 0}
             className="h-2"
           />
           
@@ -513,40 +520,49 @@ const MetricsBreakdown: React.FC<MetricsBreakdownProps> = ({ metrics, showDetail
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="flex items-center justify-between">
-            <span className="text-slate-300">Domain Authority</span>
-            <span className={`font-bold text-xl ${getScoreColor(metrics.backlinks.domainAuthority)}`}>
-              {metrics.backlinks.domainAuthority}
-            </span>
-          </div>
-          <Progress 
-            value={metrics.backlinks.domainAuthority} 
-            className="h-2"
-          />
-          
-          {showDetailed && (
-            <div className="space-y-3 pt-2 border-t border-slate-700">
-              <h4 className="text-sm font-semibold text-indigo-400">Link Metrics</h4>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-400">Total Backlinks</span>
-                  <Badge variant="outline" className="text-xs">
-                    {metrics.backlinks.totalBacklinks.toLocaleString()}
-                  </Badge>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-400">Referring Domains</span>
-                  <Badge variant="outline" className="text-xs">
-                    {metrics.backlinks.referringDomains.toLocaleString()}
-                  </Badge>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-400">Page Authority</span>
-                  <Badge variant="outline" className="text-xs">
-                    {metrics.backlinks.pageAuthority}
-                  </Badge>
-                </div>
+          {metrics.backlinks ? (
+            <>
+              <div className="flex items-center justify-between">
+                <span className="text-slate-300">Domain Authority</span>
+                <span className={`font-bold text-xl ${getScoreColor(metrics.backlinks.domainAuthority)}`}>
+                  {metrics.backlinks.domainAuthority}
+                </span>
               </div>
+              <Progress
+                value={metrics.backlinks.domainAuthority}
+                className="h-2"
+              />
+
+              {showDetailed && (
+                <div className="space-y-3 pt-2 border-t border-slate-700">
+                  <h4 className="text-sm font-semibold text-indigo-400">Link Metrics</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between items-center">
+                      <span className="text-slate-400">Total Backlinks</span>
+                      <Badge variant="outline" className="text-xs">
+                        {metrics.backlinks.totalBacklinks.toLocaleString()}
+                      </Badge>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-slate-400">Referring Domains</span>
+                      <Badge variant="outline" className="text-xs">
+                        {metrics.backlinks.referringDomains.toLocaleString()}
+                      </Badge>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-slate-400">Page Authority</span>
+                      <Badge variant="outline" className="text-xs">
+                        {metrics.backlinks.pageAuthority}
+                      </Badge>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="text-sm text-slate-400">
+              <span className="font-medium text-slate-500">Unavailable</span> - backlink and domain authority
+              data requires a paid third-party backlink index (e.g. Ahrefs, Moz) and isn't measured by this audit.
             </div>
           )}
         </CardContent>
@@ -563,12 +579,10 @@ const MetricsBreakdown: React.FC<MetricsBreakdownProps> = ({ metrics, showDetail
         <CardContent className="space-y-4">
           <div className="flex items-center justify-between">
             <span className="text-slate-300">Mobile Score</span>
-            <span className={`font-bold text-xl ${getScoreColor(metrics.technical.mobileCoreWebVitals)}`}>
-              {metrics.technical.mobileCoreWebVitals}
-            </span>
+            {renderScoreValue(metrics.technical.mobileCoreWebVitals)}
           </div>
-          <Progress 
-            value={metrics.technical.mobileCoreWebVitals} 
+          <Progress
+            value={metrics.technical.mobileCoreWebVitals ?? 0}
             className="h-2"
           />
           

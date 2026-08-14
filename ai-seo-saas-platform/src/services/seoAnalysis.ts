@@ -3,76 +3,139 @@ import { analyzeAISearchReadiness, calculateAISearchReadinessScore, generateAISe
 import { analyzeVoiceSearchOptimization, calculateVoiceSearchScore, generateVoiceSearchRecommendations } from './voiceSearchAnalysis'
 import { analyzeSchemaEntity, calculateSchemaEntityScore, generateSchemaEntityRecommendations } from './schemaAnalysis'
 import { analyzeEEAT, calculateEEATScore, generateEEATRecommendations } from './eeAtAnalysis'
+import { extractPageSignals, scoreHeadingStructure, analyzeSecurityHeaders, PageSignals } from './htmlSignals'
 
-// Enhanced SEO analysis service with 2025 AI-powered features
-// Integrates traditional SEO with AI search optimization, voice search, schema markup, and E-E-A-T
+// Real SEO analysis service. Fetches the target page server-side (avoids
+// browser CORS), parses the real HTML, and scores everything from what was
+// actually found - no Math.random(), no scoring derived from the URL string.
+// Anything that genuinely cannot be measured (typically because no
+// GOOGLE_PAGESPEED_API_KEY is configured, or the target blocked/timed out
+// our fetch) is surfaced as null/"unavailable", never a fabricated number.
+
+interface FetchSiteResponse {
+  ok: boolean
+  finalUrl?: string
+  httpStatus?: number
+  html?: string
+  responseHeaders?: Record<string, string>
+  robotsTxtFound?: boolean
+  sitemapFound?: boolean
+  fetchError?: string | null
+}
+
+interface PageSpeedResponse {
+  unavailable: boolean
+  reason?: string
+  performanceScore?: number | null
+  accessibilityScore?: number | null
+  bestPracticesScore?: number | null
+  coreWebVitals?: { lcp: number | null; inp: number | null; cls: number | null; ttfb: number | null; tbt: number | null }
+  pageSpeedSeconds?: number | null
+  tapTargetsOk?: boolean | null
+}
+
+async function callApi<T>(path: string, body: Record<string, unknown>): Promise<T> {
+  const response = await fetch(path, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  })
+  return response.json()
+}
+
+function computeSemanticKeywordOverlap(signals: PageSignals): number {
+  const titleText = signals.title.text
+  if (!titleText) return 0
+  const stopWords = new Set(['the', 'and', 'for', 'with', 'that', 'this', 'from', 'your'])
+  const titleWords = Array.from(new Set(titleText.toLowerCase().split(/\W+/).filter((w) => w.length > 3 && !stopWords.has(w))))
+  if (titleWords.length === 0) return 0
+  const bodyLower = signals.bodyText.toLowerCase()
+  const matched = titleWords.filter((w) => bodyLower.includes(w))
+  return Math.round((matched.length / titleWords.length) * 100)
+}
+
+function computeSeoScore(signals: PageSignals, headingScore: number, robotsTxtFound: boolean, sitemapFound: boolean): number {
+  let score = 0
+  if (signals.title.present) score += 20
+  if (signals.title.length >= 10 && signals.title.length <= 60) score += 5
+  if (signals.metaDescription.present) score += 15
+  if (signals.metaDescription.length >= 50 && signals.metaDescription.length <= 160) score += 5
+  score += (headingScore / 5) * 20
+  score += (signals.images.altCoveragePct / 100) * 15
+  if (signals.canonical.present) score += 10
+  if (robotsTxtFound) score += 5
+  if (sitemapFound) score += 5
+  return Math.round(Math.max(0, Math.min(100, score)))
+}
+
+function computeInternationalSeo(signals: PageSignals): number {
+  return Math.round(Math.min(100, (signals.htmlLang ? 30 : 0) + Math.min(70, signals.hreflangCount * 15)))
+}
+
 export const performSEOAnalysis = async (url: string): Promise<SEOMetrics> => {
-  // Simulate comprehensive analysis delay
-  await new Promise(resolve => setTimeout(resolve, 1500))
+  const normalizedUrl = url.startsWith('http') ? url : `https://${url}`
 
-  // Extract domain for analysis
-  const domain = new URL(url).hostname
+  const [siteResult, pageSpeedResult] = await Promise.all([
+    callApi<FetchSiteResponse>('/api/fetch-site', { url: normalizedUrl }),
+    callApi<PageSpeedResponse>('/api/pagespeed', { url: normalizedUrl }),
+  ])
 
-  // Generate realistic mock data based on common patterns
-  const baseScore = Math.floor(Math.random() * 40) + 45 // 45-85 range
-  const variance = Math.floor(Math.random() * 20) - 10 // -10 to +10 variance
+  if (!siteResult.ok || !siteResult.html || !siteResult.finalUrl) {
+    throw new Error(siteResult.fetchError || 'Could not fetch the target site for analysis')
+  }
 
-  const performanceScore = Math.max(20, Math.min(100, baseScore + variance))
-  const seoScore = Math.max(30, Math.min(100, baseScore + Math.floor(Math.random() * 15) - 5))
-  const accessibilityScore = Math.max(40, Math.min(100, baseScore + Math.floor(Math.random() * 25) - 10))
-  const bestPracticesScore = Math.max(50, Math.min(100, baseScore + Math.floor(Math.random() * 20) - 5))
+  const doc = new DOMParser().parseFromString(siteResult.html, 'text/html')
+  const signals = extractPageSignals(doc, siteResult.finalUrl)
 
-  // NEW 2025 ANALYSIS - Perform advanced AI search analysis
-  const aiSearchMetrics = await analyzeAISearchReadiness(url)
-  const voiceSearchMetrics = await analyzeVoiceSearchOptimization(url)
-  const schemaEntityMetrics = await analyzeSchemaEntity(url)
-  const eeAtMetrics = await analyzeEEAT(url)
+  const aiSearchMetrics = analyzeAISearchReadiness(signals)
+  const voiceSearchMetrics = analyzeVoiceSearchOptimization(signals)
+  const schemaEntityMetrics = analyzeSchemaEntity(signals)
+  const eeAtMetrics = analyzeEEAT(signals)
 
-  // Calculate new 2025 scores
   const aiSearchReadiness = calculateAISearchReadinessScore(aiSearchMetrics)
   const voiceSearchOptimization = calculateVoiceSearchScore(voiceSearchMetrics)
   const schemaEntityScore = calculateSchemaEntityScore(schemaEntityMetrics)
   const eeAtScore = calculateEEATScore(eeAtMetrics)
 
-  // Enhanced overall score calculation including new factors
-  const overallScore = Math.round(
-    (performanceScore * 0.2 + 
-     seoScore * 0.2 + 
-     accessibilityScore * 0.15 + 
-     bestPracticesScore * 0.15 + 
-     aiSearchReadiness * 0.1 + 
-     voiceSearchOptimization * 0.08 + 
-     schemaEntityScore * 0.07 + 
-     eeAtScore * 0.05)
-  )
+  const headingScore = scoreHeadingStructure(signals)
+  const seoScore = computeSeoScore(signals, headingScore, Boolean(siteResult.robotsTxtFound), Boolean(siteResult.sitemapFound))
 
-  // Enhanced Core Web Vitals with 2025 metrics
-  const lcp = Number((1.2 + Math.random() * 3).toFixed(1))
-  const fid = Math.floor(50 + Math.random() * 200)
-  const cls = Number((0.05 + Math.random() * 0.2).toFixed(3))
-  const inp = Math.floor(80 + Math.random() * 300) // Interaction to Next Paint
-  const tbt = Math.floor(50 + Math.random() * 400) // Total Blocking Time
-  const ttfb = Math.floor(200 + Math.random() * 800) // Time to First Byte
+  const pagespeedAvailable = !pageSpeedResult.unavailable
+  const performanceScore = pagespeedAvailable ? pageSpeedResult.performanceScore ?? null : null
+  const accessibilityScore = pagespeedAvailable ? pageSpeedResult.accessibilityScore ?? null : null
+  const bestPracticesScore = pagespeedAvailable ? pageSpeedResult.bestPracticesScore ?? null : null
 
-  // Generate realistic backlink data with enhanced metrics
-  const domainAuthority = Math.max(10, Math.min(100, baseScore + Math.floor(Math.random() * 30) - 10))
-  const totalBacklinks = Math.floor(Math.random() * 10000) + 100
-  const referringDomains = Math.floor(totalBacklinks * (0.1 + Math.random() * 0.3))
+  const overallComponents: Array<{ value: number | null; weight: number }> = [
+    { value: performanceScore, weight: 0.2 },
+    { value: seoScore, weight: 0.2 },
+    { value: accessibilityScore, weight: 0.15 },
+    { value: bestPracticesScore, weight: 0.15 },
+    { value: aiSearchReadiness, weight: 0.1 },
+    { value: voiceSearchOptimization, weight: 0.08 },
+    { value: schemaEntityScore, weight: 0.07 },
+    { value: eeAtScore, weight: 0.05 },
+  ]
+  const availableComponents = overallComponents.filter((c) => c.value !== null) as Array<{ value: number; weight: number }>
+  const weightSum = availableComponents.reduce((sum, c) => sum + c.weight, 0)
+  const overallScore = weightSum > 0
+    ? Math.round(availableComponents.reduce((sum, c) => sum + c.value * c.weight, 0) / weightSum)
+    : 0
 
-  // Generate comprehensive issues including new categories
-  const traditionalIssues = generateTraditionalIssues(performanceScore, seoScore, accessibilityScore, bestPracticesScore, domain)
-  const aiSearchIssues = generateAISearchRecommendations(aiSearchMetrics)
-  const voiceSearchIssues = generateVoiceSearchRecommendations(voiceSearchMetrics)
-  const schemaIssues = generateSchemaEntityRecommendations(schemaEntityMetrics)
-  const eeAtIssues = generateEEATRecommendations(eeAtMetrics)
+  const securityHeaders = analyzeSecurityHeaders(siteResult.responseHeaders)
 
-  const allIssues = [
-    ...traditionalIssues,
-    ...aiSearchIssues,
-    ...voiceSearchIssues,
-    ...schemaIssues,
-    ...eeAtIssues
-  ].sort((a, b) => a.priority - b.priority) // Sort by priority
+  const issues = [
+    ...generateTraditionalIssues(signals, {
+      performanceScore,
+      headingScore,
+      securityHeaders,
+      robotsTxtFound: Boolean(siteResult.robotsTxtFound),
+      sitemapFound: Boolean(siteResult.sitemapFound),
+    }),
+    ...generateAISearchRecommendations(aiSearchMetrics),
+    ...generateVoiceSearchRecommendations(voiceSearchMetrics),
+    ...generateSchemaEntityRecommendations(schemaEntityMetrics),
+    ...generateEEATRecommendations(eeAtMetrics),
+  ].sort((a, b) => a.priority - b.priority)
 
   const metrics: SEOMetrics = {
     overallScore,
@@ -80,210 +143,204 @@ export const performSEOAnalysis = async (url: string): Promise<SEOMetrics> => {
     seoScore,
     accessibilityScore,
     bestPracticesScore,
-    
-    // NEW 2025 SCORES
+
     aiSearchReadiness,
     voiceSearchOptimization,
     schemaEntityScore,
     eeAtScore,
-    
-    // Enhanced Core Web Vitals
+
     coreWebVitals: {
-      lcp,
-      fid,
-      cls,
-      inp,
-      tbt,
-      ttfb
+      lcp: pagespeedAvailable ? pageSpeedResult.coreWebVitals?.lcp ?? null : null,
+      cls: pagespeedAvailable ? pageSpeedResult.coreWebVitals?.cls ?? null : null,
+      inp: pagespeedAvailable ? pageSpeedResult.coreWebVitals?.inp ?? null : null,
+      tbt: pagespeedAvailable ? pageSpeedResult.coreWebVitals?.tbt ?? null : null,
+      ttfb: pagespeedAvailable ? pageSpeedResult.coreWebVitals?.ttfb ?? null : null,
     },
-    
-    // AI Search Metrics
+
+    dataAvailability: {
+      pagespeedUnavailable: !pagespeedAvailable,
+      pagespeedUnavailableReason: pagespeedAvailable ? null : pageSpeedResult.reason || 'unavailable',
+      fetchError: null,
+    },
+
     aiSearch: aiSearchMetrics,
-    
-    // Voice Search Metrics
     voiceSearch: voiceSearchMetrics,
-    
-    // Schema & Entity Metrics
     schemaEntity: schemaEntityMetrics,
-    
-    // E-E-A-T Metrics
     eeAt: eeAtMetrics,
-    
-    // Enhanced Technical Metrics
+
     technical: {
-      https: url.startsWith('https://'),
-      mobile: Math.random() > 0.2,
-      pageSpeed: Number((2.1 + Math.random() * 4).toFixed(1)),
-      imageOptimization: Math.floor(40 + Math.random() * 50),
-      mobileCoreWebVitals: Math.floor(60 + Math.random() * 35),
-      pwaCompatibility: Math.random() > 0.7,
+      https: signals.https,
+      mobile: signals.viewportMeta.present,
+      pageSpeed: pagespeedAvailable ? pageSpeedResult.pageSpeedSeconds ?? null : null,
+      imageOptimization: signals.images.altCoveragePct,
+      mobileCoreWebVitals: pagespeedAvailable ? pageSpeedResult.performanceScore ?? null : null,
+      pwaCompatibility: signals.hasManifest,
+      touchTargetsOk: pagespeedAvailable ? pageSpeedResult.tapTargetsOk ?? null : null,
       structuredDataValidation: schemaEntityScore,
-      internationalSeo: Math.floor(40 + Math.random() * 40)
+      internationalSeo: computeInternationalSeo(signals),
+      securityHeaders,
     },
-    
-    // Enhanced On-Page Metrics
+
     onPage: {
-      titleTag: Math.random() > 0.3,
-      metaDescription: Math.random() > 0.4,
-      headings: Math.floor(1 + Math.random() * 5),
-      altText: Math.floor(30 + Math.random() * 60),
-      semanticKeywords: Math.floor(40 + Math.random() * 50),
+      titleTag: signals.title.present,
+      metaDescription: signals.metaDescription.present,
+      headings: headingScore,
+      altText: signals.images.altCoveragePct,
+      semanticKeywords: computeSemanticKeywordOverlap(signals),
       contentComprehensiveness: eeAtMetrics.contentDepth,
-      userIntentAlignment: Math.floor(50 + Math.random() * 40),
-      readabilityScore: voiceSearchMetrics.averageReadingLevel
+      userIntentAlignment: Math.round((voiceSearchMetrics.questionBasedContent + voiceSearchMetrics.featuredSnippetOpportunities) / 2),
+      readabilityScore: voiceSearchMetrics.averageReadingLevel,
     },
-    
-    // Enhanced Backlink Metrics
-    backlinks: {
-      totalBacklinks,
-      referringDomains,
-      domainAuthority,
-      pageAuthority: Math.max(5, domainAuthority - Math.floor(Math.random() * 20)),
-      linkQualityScore: Math.floor(40 + Math.random() * 50),
-      topicalRelevance: Math.floor(35 + Math.random() * 55),
-      brandMentions: Math.floor(10 + Math.random() * 200)
-    },
-    
-    issues: allIssues
+
+    issues,
   }
 
   return metrics
 }
 
 const generateTraditionalIssues = (
-  performanceScore: number,
-  seoScore: number,
-  accessibilityScore: number,
-  bestPracticesScore: number,
-  domain: string
+  signals: PageSignals,
+  ctx: {
+    performanceScore: number | null
+    headingScore: number
+    securityHeaders: ReturnType<typeof analyzeSecurityHeaders>
+    robotsTxtFound: boolean
+    sitemapFound: boolean
+  }
 ) => {
   const issues = []
 
-  // Performance issues
-  if (performanceScore < 70) {
+  if (ctx.performanceScore === null) {
+    issues.push({
+      type: 'info' as const,
+      category: 'performance' as const,
+      title: 'Performance Data Unavailable',
+      description: 'No Google PageSpeed Insights API key is configured, so real performance and Core Web Vitals data could not be measured.',
+      recommendation: 'Set GOOGLE_PAGESPEED_API_KEY on the server to enable real performance scoring (see server/.env.example).',
+      priority: 1,
+      impact: 'medium' as const,
+    })
+  } else if (ctx.performanceScore < 70) {
     issues.push({
       type: 'critical' as const,
       category: 'performance' as const,
       title: 'Slow Page Loading Speed',
-      description: 'Your website takes too long to load, which negatively impacts user experience and search rankings.',
-      recommendation: 'Optimize images, enable compression, minimize CSS/JavaScript files, and consider using a Content Delivery Network (CDN) to improve loading times.',
+      description: `Google PageSpeed Insights measured a real performance score of ${ctx.performanceScore}/100.`,
+      recommendation: 'Optimize images, enable compression, minimize CSS/JavaScript files, and consider using a CDN to improve loading times.',
       priority: 1,
-      impact: 'high' as const
+      impact: 'high' as const,
     })
   }
 
-  if (performanceScore < 80) {
-    issues.push({
-      type: 'warning' as const,
-      category: 'performance' as const,
-      title: 'Large Cumulative Layout Shift',
-      description: 'Elements on your page are shifting during load, causing poor user experience.',
-      recommendation: 'Set size attributes for images and videos, avoid inserting content above existing content, and preload fonts to reduce layout shifts.',
-      priority: 2,
-      impact: 'medium' as const
-    })
-  }
-
-  // SEO issues
-  if (seoScore < 70) {
+  if (!signals.title.present) {
     issues.push({
       type: 'critical' as const,
       category: 'traditional' as const,
-      title: 'Missing or Poor Meta Descriptions',
-      description: 'Meta descriptions are missing or not optimized, reducing click-through rates from search results.',
-      recommendation: 'Write compelling, unique meta descriptions (150-160 characters) for each page that accurately describe the content and include target keywords.',
-      priority: 3,
-      impact: 'high' as const
+      title: 'Missing Title Tag',
+      description: 'No <title> tag was found on the page.',
+      recommendation: 'Add a unique, descriptive title tag (50-60 characters) to every page.',
+      priority: 2,
+      impact: 'high' as const,
     })
   }
 
-  if (seoScore < 80) {
+  if (!signals.metaDescription.present) {
+    issues.push({
+      type: 'critical' as const,
+      category: 'traditional' as const,
+      title: 'Missing Meta Description',
+      description: 'No meta description was found, reducing click-through rates from search results.',
+      recommendation: 'Write a compelling, unique meta description (150-160 characters) that accurately describes the page.',
+      priority: 3,
+      impact: 'high' as const,
+    })
+  }
+
+  if (ctx.headingScore < 3) {
     issues.push({
       type: 'warning' as const,
       category: 'traditional' as const,
       title: 'Suboptimal Header Structure',
-      description: 'Your page header structure could be improved for better SEO and readability.',
-      recommendation: 'Use a clear hierarchy with H1 for main titles, H2 for sections, and H3+ for subsections. Include relevant keywords naturally in your headings.',
+      description: signals.headings.h1Count !== 1
+        ? `Found ${signals.headings.h1Count} H1 tag(s) - pages should have exactly one.`
+        : 'Heading levels are skipped or the page lacks sub-headings.',
+      recommendation: 'Use exactly one H1 for the main title, then H2s/H3s in order without skipping levels.',
       priority: 4,
-      impact: 'medium' as const
+      impact: 'medium' as const,
     })
   }
 
-  // Accessibility issues
-  if (accessibilityScore < 80) {
+  if (signals.images.total > 0 && signals.images.altCoveragePct < 80) {
     issues.push({
       type: 'warning' as const,
       category: 'traditional' as const,
       title: 'Missing Image Alt Text',
-      description: 'Some images are missing alternative text, affecting accessibility and SEO.',
-      recommendation: 'Add descriptive alt text to all images. Use empty alt="" for decorative images and detailed descriptions for informative images.',
+      description: `Only ${signals.images.altCoveragePct}% of the ${signals.images.total} images found have alt text.`,
+      recommendation: 'Add descriptive alt text to all informative images; use alt="" for purely decorative images.',
       priority: 5,
-      impact: 'medium' as const
+      impact: 'medium' as const,
     })
   }
 
-  // Technical issues
-  issues.push({
-    type: 'info' as const,
-    category: 'traditional' as const,
-    title: 'XML Sitemap Optimization',
-    description: 'Ensure your XML sitemap is up-to-date and submitted to search engines.',
-    recommendation: 'Create or update your XML sitemap to include all important pages, submit it to Google Search Console and Bing Webmaster Tools.',
-    priority: 8,
-    impact: 'low' as const
-  })
+  if (!ctx.sitemapFound) {
+    issues.push({
+      type: 'warning' as const,
+      category: 'traditional' as const,
+      title: 'No XML Sitemap Found',
+      description: 'No sitemap was discoverable via robots.txt or common sitemap URLs.',
+      recommendation: 'Create an XML sitemap listing important pages and submit it to Google Search Console and Bing Webmaster Tools.',
+      priority: 8,
+      impact: 'low' as const,
+    })
+  }
 
-  if (bestPracticesScore < 85) {
+  if (!ctx.robotsTxtFound) {
+    issues.push({
+      type: 'info' as const,
+      category: 'traditional' as const,
+      title: 'No robots.txt Found',
+      description: 'The site does not serve a robots.txt file.',
+      recommendation: 'Add a robots.txt file to control crawler access and point search engines to your sitemap.',
+      priority: 9,
+      impact: 'low' as const,
+    })
+  }
+
+  if (ctx.securityHeaders.count < ctx.securityHeaders.total) {
     issues.push({
       type: 'warning' as const,
       category: 'traditional' as const,
       title: 'Security Headers Missing',
-      description: 'Important security headers are missing, which could affect user trust and search rankings.',
-      recommendation: 'Implement security headers like Content-Security-Policy, X-Frame-Options, and X-Content-Type-Options to improve website security.',
+      description: `${ctx.securityHeaders.missing.join(', ')} ${ctx.securityHeaders.missing.length === 1 ? 'was' : 'were'} not found in the site's response headers.`,
+      recommendation: 'Implement missing security headers to improve user trust and reduce attack surface.',
       priority: 6,
-      impact: 'medium' as const
+      impact: 'medium' as const,
     })
   }
 
-  // Mobile issues
-  issues.push({
-    type: 'info' as const,
-    category: 'traditional' as const,
-    title: 'Mobile Usability Enhancement',
-    description: 'Opportunities exist to improve mobile user experience.',
-    recommendation: 'Ensure touch targets are at least 44px, use readable font sizes (16px+), and optimize the mobile viewport for better usability.',
-    priority: 9,
-    impact: 'low' as const
-  })
+  if (!signals.canonical.present) {
+    issues.push({
+      type: 'info' as const,
+      category: 'traditional' as const,
+      title: 'Missing Canonical Tag',
+      description: 'No <link rel="canonical"> tag was found on the page.',
+      recommendation: 'Add a self-referencing canonical tag to prevent duplicate-content issues.',
+      priority: 10,
+      impact: 'low' as const,
+    })
+  }
 
-  // Content issues
-  if (seoScore < 75) {
+  if (!signals.viewportMeta.present) {
     issues.push({
       type: 'warning' as const,
       category: 'traditional' as const,
-      title: 'Content Optimization Opportunities',
-      description: 'Your content could be better optimized for target keywords and user intent.',
-      recommendation: 'Research and target relevant keywords, create comprehensive content that answers user questions, and maintain consistent publishing schedule.',
+      title: 'Missing Mobile Viewport Tag',
+      description: 'No <meta name="viewport"> tag was found - a core mobile-friendliness signal.',
+      recommendation: 'Add <meta name="viewport" content="width=device-width, initial-scale=1"> to the page head.',
       priority: 7,
-      impact: 'medium' as const
+      impact: 'medium' as const,
     })
   }
 
   return issues
-}
-
-// Simulate checking if a URL is valid and reachable
-export const validateUrl = async (url: string): Promise<boolean> => {
-  try {
-    // Basic URL validation
-    new URL(url.startsWith('http') ? url : `https://${url}`)
-    
-    // Simulate network check
-    await new Promise(resolve => setTimeout(resolve, 500))
-    
-    // Randomly simulate some URLs being unreachable (10% chance)
-    return Math.random() > 0.1
-  } catch {
-    return false
-  }
 }

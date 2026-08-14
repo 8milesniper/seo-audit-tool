@@ -146,7 +146,7 @@ export const generatePDFReport = async (url: string, metrics: SEOMetrics, userDa
   currentY += 8
   addText(`• ${warningIssues} warnings that should be addressed`, margin, currentY, 11, darkColor)
   currentY += 8
-  addText(`• Core Web Vitals: LCP ${metrics.coreWebVitals.lcp}s, FID ${metrics.coreWebVitals.fid}ms, CLS ${metrics.coreWebVitals.cls}`, margin, currentY, 11, darkColor)
+  addText(`• Core Web Vitals: LCP ${metrics.coreWebVitals.lcp}s, TBT ${metrics.coreWebVitals.tbt}ms, CLS ${metrics.coreWebVitals.cls}`, margin, currentY, 11, darkColor)
   currentY += 8
   addText(`• Mobile-friendly: ${metrics.technical.mobile ? 'Yes' : 'No'}`, margin, currentY, 11, darkColor)
   currentY += 8
@@ -168,7 +168,7 @@ export const generatePDFReport = async (url: string, metrics: SEOMetrics, userDa
 
   const webVitals = [
     { metric: 'Largest Contentful Paint (LCP)', value: `${metrics.coreWebVitals.lcp}s`, threshold: '< 2.5s', status: metrics.coreWebVitals.lcp <= 2.5 },
-    { metric: 'First Input Delay (FID)', value: `${metrics.coreWebVitals.fid}ms`, threshold: '< 100ms', status: metrics.coreWebVitals.fid <= 100 },
+    { metric: 'Total Blocking Time (TBT)', value: `${metrics.coreWebVitals.tbt}ms`, threshold: '< 200ms', status: metrics.coreWebVitals.tbt <= 200 },
     { metric: 'Cumulative Layout Shift (CLS)', value: metrics.coreWebVitals.cls.toString(), threshold: '< 0.1', status: metrics.coreWebVitals.cls <= 0.1 }
   ]
 
@@ -318,7 +318,7 @@ export const generateHTMLReport = (url: string, metrics: SEOMetrics, userData: U
       <ul>
         <li>${criticalIssues} critical issues requiring immediate attention</li>
         <li>${warningIssues} warnings that should be addressed</li>
-        <li>Core Web Vitals: LCP ${metrics.coreWebVitals.lcp}s, FID ${metrics.coreWebVitals.fid}ms, CLS ${metrics.coreWebVitals.cls}</li>
+        <li>Core Web Vitals: LCP ${metrics.coreWebVitals.lcp}s, TBT ${metrics.coreWebVitals.tbt}ms, CLS ${metrics.coreWebVitals.cls}</li>
         <li>Mobile-friendly: ${metrics.technical.mobile ? 'Yes' : 'No'}</li>
         <li>HTTPS enabled: ${metrics.technical.https ? 'Yes' : 'No'}</li>
       </ul>

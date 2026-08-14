@@ -55,13 +55,20 @@ const AuditDashboard = () => {
     }
 
     // Perform actual analysis
-    const metrics = await performSEOAnalysis(state.url!)
-    dispatch({ type: 'SET_METRICS', payload: metrics })
-    
-    // Show lead capture after basic results
-    setTimeout(() => {
-      dispatch({ type: 'SHOW_LEAD_CAPTURE' })
-    }, 2000)
+    try {
+      const metrics = await performSEOAnalysis(state.url!)
+      dispatch({ type: 'SET_METRICS', payload: metrics })
+
+      // Show lead capture after basic results
+      setTimeout(() => {
+        dispatch({ type: 'SHOW_LEAD_CAPTURE' })
+      }, 2000)
+    } catch (error) {
+      dispatch({
+        type: 'SET_ERROR',
+        payload: error instanceof Error ? error.message : 'Could not analyze this site. It may be blocking automated requests or took too long to respond.',
+      })
+    }
   }
 
   const handleLeadSubmit = async (e: React.FormEvent) => {
@@ -260,6 +267,22 @@ This lead was captured from: https://3y4yfdsyun.space.minimax.io
 
             {/* Issues Panel */}
             <IssuesPanel issues={state.metrics.issues} showDetailed={!!state.userData && state.reportGenerated} />
+          </div>
+        ) : state.error ? (
+          // Analysis failed - show why instead of hanging or faking results
+          <div className="max-w-2xl mx-auto text-center">
+            <Card className="bg-slate-800/50 border-slate-700">
+              <CardContent className="p-8">
+                <h2 className="text-2xl font-bold text-white mb-2">Couldn't Analyze This Site</h2>
+                <p className="text-slate-400 mb-6">{state.error}</p>
+                <Button
+                  onClick={() => navigate('/')}
+                  className="bg-amber-500 hover:bg-amber-600 text-black"
+                >
+                  Try Another URL
+                </Button>
+              </CardContent>
+            </Card>
           </div>
         ) : null}
       </div>

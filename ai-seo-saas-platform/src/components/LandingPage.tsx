@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
+import { useAudit } from "../contexts/AuditContext";
 
 const LandingPage = () => {
+  const [url, setUrl] = useState("");
+  const [urlError, setUrlError] = useState<string | null>(null);
+  const { dispatch } = useAudit();
+  const navigate = useNavigate();
+
+  const startFreeAudit = () => {
+    const trimmed = url.trim();
+    if (!trimmed) {
+      setUrlError("Enter a website URL to audit");
+      return;
+    }
+    setUrlError(null);
+    dispatch({ type: "SET_URL", payload: trimmed });
+    navigate("/audit");
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#152236] to-[#6f3600] text-yellow-400 font-sans">
 
@@ -20,9 +38,32 @@ const LandingPage = () => {
         </p>
       </header>
 
+      {/* URL Input */}
+      <div className="mt-8 max-w-md mx-auto px-6">
+        <input
+          type="text"
+          value={url}
+          onChange={(e) => {
+            setUrl(e.target.value);
+            if (urlError) setUrlError(null);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") startFreeAudit();
+          }}
+          placeholder="Enter your website URL (e.g. example.com)"
+          className="w-full py-2 px-4 rounded text-black text-sm"
+        />
+        {urlError && (
+          <p className="mt-2 text-xs text-red-400">{urlError}</p>
+        )}
+      </div>
+
       {/* Primary CTAs */}
-      <div className="mt-8 flex justify-center gap-4">
-        <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-2 px-6 rounded transition">
+      <div className="mt-4 flex justify-center gap-4">
+        <button
+          onClick={startFreeAudit}
+          className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-2 px-6 rounded transition"
+        >
           Start Free SEO & AI Analysis
         </button>
         <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-2 px-6 rounded transition">
@@ -43,7 +84,10 @@ const LandingPage = () => {
               <li>AI Content breakdown</li>
               <li>Shareable PDF report</li>
             </ul>
-            <button className="mt-4 bg-yellow-500 py-1 px-3 rounded text-black text-sm">
+            <button
+              onClick={startFreeAudit}
+              className="mt-4 bg-yellow-500 py-1 px-3 rounded text-black text-sm"
+            >
               Start Free Audit
             </button>
           </div>
