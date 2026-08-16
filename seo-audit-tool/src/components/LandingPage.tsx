@@ -120,10 +120,10 @@ const LandingPage = () => {
 
   const benefits = [
     'Comprehensive Core Web Vitals analysis',
-    'Advanced backlink profile assessment',
+    'AI-search & voice-search readiness scoring',
     'Technical SEO issue detection',
     'Mobile-first optimization insights',
-    'Competitor comparison data',
+    'Schema & E-E-A-T authority signals',
     'Branded PDF reports included'
   ]
 
@@ -356,7 +356,7 @@ const LandingPage = () => {
       <footer className="px-6 py-8 border-t border-slate-800">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-slate-400">
-            © 2025 8 Mile Sniper. All rights reserved. | AI-Driven Local Growth Solutions
+            © {new Date().getFullYear()} 8 Mile Sniper. All rights reserved. | AI-Driven Local Growth Solutions
           </p>
         </div>
       </footer>
