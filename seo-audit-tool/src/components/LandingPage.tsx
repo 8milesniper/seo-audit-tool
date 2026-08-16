@@ -4,6 +4,7 @@ import { Search, Target, Award, Shield, Zap, ArrowRight, CheckCircle } from 'luc
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
 import { useAudit } from '@/contexts/AuditContext'
 
 const LandingPage = () => {
@@ -70,6 +71,50 @@ const LandingPage = () => {
       icon: Award,
       title: 'Actionable Reports',
       description: 'Prioritized recommendations for immediate impact'
+    }
+  ]
+
+  const pricingPlans = [
+    {
+      name: 'Free Audit',
+      price: '$0',
+      period: '',
+      bullets: [
+        'Instant AI-search readiness scan',
+        'Branded PDF report showing every error',
+        'Google + AI-engine visibility score'
+      ],
+      buttonLabel: 'Start Free Audit',
+      highlighted: false,
+      badge: null
+    },
+    {
+      name: 'Fix Report',
+      price: '$47',
+      period: 'one-off',
+      bullets: [
+        'Everything in the Free Audit',
+        'The exact fix for every error found',
+        'Prioritised by impact, developer-ready',
+        'Full branded PDF'
+      ],
+      buttonLabel: 'Get My Fix Report',
+      highlighted: false,
+      badge: null
+    },
+    {
+      name: 'Watchtower',
+      price: '$37',
+      period: '/mo',
+      bullets: [
+        'Everything in Fix Report',
+        'Automatic weekly re-audits',
+        'Fresh fix report emailed every week',
+        'Instant alert when something breaks'
+      ],
+      buttonLabel: 'Start Watchtower',
+      highlighted: true,
+      badge: 'Most Popular'
     }
   ]
 
@@ -186,6 +231,65 @@ const LandingPage = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="px-6 py-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Simple, Honest Pricing
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 items-stretch">
+            {pricingPlans.map((plan, index) => (
+              <Card
+                key={index}
+                className={`relative flex flex-col bg-slate-800/50 backdrop-blur-sm ${
+                  plan.highlighted
+                    ? 'border-2 border-amber-500 shadow-lg shadow-amber-500/20'
+                    : 'border-slate-700'
+                }`}
+              >
+                {plan.badge && (
+                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-black border-amber-500 hover:bg-amber-500">
+                    {plan.badge}
+                  </Badge>
+                )}
+                <CardContent className="p-8 flex flex-col flex-1">
+                  <h3 className="text-xl font-bold text-white mb-2 text-center">
+                    {plan.name}
+                  </h3>
+                  <div className="text-center mb-6">
+                    <span className="text-4xl font-bold text-amber-400">{plan.price}</span>
+                    {plan.period && (
+                      <span className="text-slate-400 text-sm ml-1">{plan.period}</span>
+                    )}
+                  </div>
+                  <div className="space-y-3 mb-8 flex-1">
+                    {plan.bullets.map((bullet, bulletIndex) => (
+                      <div key={bulletIndex} className="flex items-start space-x-3">
+                        <CheckCircle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-slate-300 text-sm">{bullet}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Button
+                    onClick={() => {}}
+                    className={
+                      plan.highlighted
+                        ? 'w-full h-12 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black font-semibold transition-all duration-200'
+                        : 'w-full h-12 bg-slate-700 hover:bg-slate-600 text-white font-semibold transition-all duration-200'
+                    }
+                  >
+                    {plan.buttonLabel}
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
