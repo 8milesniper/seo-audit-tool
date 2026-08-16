@@ -117,14 +117,14 @@ const LandingPage = () => {
           <div className="relative z-10">
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
               <span className="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
-                Precision
+                Search Just Changed.
               </span>
               <br />
-              SEO Targeting
+              Is Your Site Ready?
             </h1>
-            
+
             <p className="text-xl md:text-2xl text-slate-300 mb-4 max-w-2xl mx-auto">
-              Get a world-class SEO audit that outperforms the competition
+              Precision SEO & AI Search Optimization — get found on Google, ChatGPT, and the AI engines your customers now use.
             </p>
             
             <p className="text-lg text-amber-400 mb-12 font-semibold">
