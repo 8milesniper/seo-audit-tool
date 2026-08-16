@@ -88,9 +88,9 @@ const LandingPage = () => {
       <nav className="relative z-10 px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <img 
-              src="/8-mile-sniper-logo.png" 
-              alt="8 Mile Sniper" 
+            <img
+              src="/eagle.png"
+              alt="8 Mile Sniper"
               className="h-12 w-12 object-contain"
             />
             <div>
