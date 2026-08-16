@@ -44,7 +44,7 @@ const AuditDashboard = () => {
       { progress: 30, message: 'Checking mobile-friendliness and responsiveness...' },
       { progress: 45, message: 'Scanning technical SEO elements...' },
       { progress: 60, message: 'Evaluating on-page optimization...' },
-      { progress: 75, message: 'Analyzing backlink profile...' },
+      { progress: 75, message: 'Evaluating AI-search and voice-search readiness...' },
       { progress: 90, message: 'Generating comprehensive report...' },
       { progress: 100, message: 'Analysis complete!' }
     ]
