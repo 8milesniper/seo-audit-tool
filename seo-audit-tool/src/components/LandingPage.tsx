@@ -139,7 +139,7 @@ const LandingPage = () => {
               className="h-12 w-12 object-contain"
             />
             <div>
-              <h1 className="text-xl font-bold text-white">8 Mile Sniper</h1>
+              <p className="text-xl font-bold text-white">8 Mile Sniper</p>
               <p className="text-xs text-amber-200">AI-Driven Local Growth</p>
             </div>
           </div>
@@ -226,7 +226,7 @@ const LandingPage = () => {
                   <div className="bg-amber-500/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <feature.icon className="w-8 h-8 text-amber-400" />
                   </div>
-                  <h3 className="text-white font-semibold mb-2">{feature.title}</h3>
+                  <h2 className="text-white font-semibold mb-2">{feature.title}</h2>
                   <p className="text-slate-400 text-sm">{feature.description}</p>
                 </div>
               ))}
