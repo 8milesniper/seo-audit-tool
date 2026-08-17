@@ -7,6 +7,62 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { useAudit } from '@/contexts/AuditContext'
 
+interface PricingPlan {
+  name: string
+  price: string
+  period: string
+  bullets: string[]
+  buttonLabel: string
+  highlighted: boolean
+  badge: string | null
+  priceColorClass?: string
+}
+
+const PricingCard = ({ plan }: { plan: PricingPlan }) => (
+  <Card
+    className={`relative flex flex-col bg-slate-800/50 backdrop-blur-sm ${
+      plan.highlighted
+        ? 'border-2 border-amber-500 shadow-lg shadow-amber-500/20'
+        : 'border-slate-700'
+    }`}
+  >
+    {plan.badge && (
+      <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-black border-amber-500 hover:bg-amber-500">
+        {plan.badge}
+      </Badge>
+    )}
+    <CardContent className="p-8 flex flex-col flex-1">
+      <h3 className="text-xl font-bold text-white mb-2 text-center">
+        {plan.name}
+      </h3>
+      <div className="text-center mb-6">
+        <span className={`text-4xl font-bold ${plan.priceColorClass ?? 'text-amber-400'}`}>{plan.price}</span>
+        {plan.period && (
+          <span className="text-slate-400 text-sm ml-1">{plan.period}</span>
+        )}
+      </div>
+      <div className="space-y-3 mb-8 flex-1">
+        {plan.bullets.map((bullet, bulletIndex) => (
+          <div key={bulletIndex} className="flex items-start space-x-3">
+            <CheckCircle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
+            <span className="text-slate-300 text-sm">{bullet}</span>
+          </div>
+        ))}
+      </div>
+      <Button
+        onClick={() => {}}
+        className={
+          plan.highlighted
+            ? 'w-full h-12 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black font-semibold transition-all duration-200'
+            : 'w-full h-12 bg-slate-700 hover:bg-slate-600 text-white font-semibold transition-all duration-200'
+        }
+      >
+        {plan.buttonLabel}
+      </Button>
+    </CardContent>
+  </Card>
+)
+
 const LandingPage = () => {
   const [url, setUrl] = useState('')
   const [isValidating, setIsValidating] = useState(false)
@@ -115,6 +171,36 @@ const LandingPage = () => {
       buttonLabel: 'Start Watchtower',
       highlighted: true,
       badge: 'Most Popular'
+    },
+    {
+      name: 'Done For You Ongoing',
+      price: '$350',
+      period: '/mo',
+      bullets: [
+        'Everything in Done For You',
+        'We keep it fixed — regular re-audits',
+        'New issues fixed as they appear',
+        'Stay AI-search ready as your site and the AI engines change'
+      ],
+      buttonLabel: 'Book a Call',
+      highlighted: false,
+      badge: null,
+      priceColorClass: 'text-slate-200'
+    },
+    {
+      name: 'Done For You',
+      price: '$450',
+      period: 'one-off',
+      bullets: [
+        'Everything in the paid tiers',
+        'We log in and implement every fix for you',
+        'Technical SEO + AI-search readiness, done right',
+        'Before/after report — no code needed'
+      ],
+      buttonLabel: 'Book a Call',
+      highlighted: false,
+      badge: null,
+      priceColorClass: 'text-amber-400'
     }
   ]
 
@@ -245,52 +331,27 @@ const LandingPage = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 items-stretch">
-            {pricingPlans.map((plan, index) => (
-              <Card
-                key={index}
-                className={`relative flex flex-col bg-slate-800/50 backdrop-blur-sm ${
-                  plan.highlighted
-                    ? 'border-2 border-amber-500 shadow-lg shadow-amber-500/20'
-                    : 'border-slate-700'
-                }`}
-              >
-                {plan.badge && (
-                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-black border-amber-500 hover:bg-amber-500">
-                    {plan.badge}
-                  </Badge>
-                )}
-                <CardContent className="p-8 flex flex-col flex-1">
-                  <h3 className="text-xl font-bold text-white mb-2 text-center">
-                    {plan.name}
-                  </h3>
-                  <div className="text-center mb-6">
-                    <span className="text-4xl font-bold text-amber-400">{plan.price}</span>
-                    {plan.period && (
-                      <span className="text-slate-400 text-sm ml-1">{plan.period}</span>
-                    )}
-                  </div>
-                  <div className="space-y-3 mb-8 flex-1">
-                    {plan.bullets.map((bullet, bulletIndex) => (
-                      <div key={bulletIndex} className="flex items-start space-x-3">
-                        <CheckCircle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-slate-300 text-sm">{bullet}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <Button
-                    onClick={() => {}}
-                    className={
-                      plan.highlighted
-                        ? 'w-full h-12 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black font-semibold transition-all duration-200'
-                        : 'w-full h-12 bg-slate-700 hover:bg-slate-600 text-white font-semibold transition-all duration-200'
-                    }
-                  >
-                    {plan.buttonLabel}
-                  </Button>
-                </CardContent>
-              </Card>
+            {pricingPlans.slice(0, 3).map((plan, index) => (
+              <PricingCard key={index} plan={plan} />
             ))}
           </div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-stretch max-w-3xl mx-auto mt-8">
+            {pricingPlans.slice(3).map((plan, index) => (
+              <PricingCard key={index} plan={plan} />
+            ))}
+          </div>
+
+          <p className="text-center text-slate-400 text-sm mt-12">
+            Need something else? New website, AI automation, or a custom project —{' '}
+            <a
+              href="mailto:support@yourfitnessisyourfortune.com"
+              className="text-amber-400 hover:text-amber-300 underline underline-offset-2"
+            >
+              get in touch
+            </a>
+            .
+          </p>
         </div>
       </section>
 
